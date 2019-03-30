@@ -115,7 +115,7 @@ public class TestIO extends TestCase {
 		assertEquals(100, text.getPosition().x, 0.1);
 		assertEquals(200, text.getPosition().y, 0.1);
 		assertEquals(RepositoryTextStyle.DEFAUL_STYLE_ID, text.getStyle().getId());
-		// Vérification de la référence
+		// Vï¿½rification de la rï¿½fï¿½rence
 		assertTrue(text.getStyle() == settings.getTextStyles().getStyle(RepositoryTextStyle.DEFAUL_STYLE_ID));
 
 		OrbeLineList lineList = map.getLineList();
@@ -222,7 +222,7 @@ public class TestIO extends TestCase {
 		assertEquals(10, stylesLine.size());
 		StyleLine styleLine = styleLineList.getStyle(1);
 		assertEquals(1, styleLine.getId());
-		assertEquals("Rivière", styleLine.getName());
+		assertEquals("RiviÃ¨re", styleLine.getName());
 		assertEquals(10, styleLine.getThickness());
 		assertEquals(LineType.RIVER, styleLine.getType());
 		assertEquals(ColorUtils.fromHEX("3399FF"), styleLine.getColor());

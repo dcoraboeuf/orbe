@@ -22,7 +22,7 @@ public class TestSymbols extends TestCase {
 		HexSymbol hexSymbol = rep.getSymbol(18);
 		assertNotNull(hexSymbol);
 		assertEquals(18, hexSymbol.getId());
-		assertEquals("Forêt", hexSymbol.getName());
+		assertEquals("ForÃªt", hexSymbol.getName());
 		// TODO Test de l'image du symbole
 		// TODO Test du type de symbole
 	}

@@ -17,7 +17,7 @@ public class TestUnit extends TestCase {
 	public void testCM() {
 		Unit unit = Unit.CM;
 		double pixels = unit.getPixels();
-		assertEquals(37.79, pixels, 0.01);
+		assertEquals(43.30, pixels, 0.01);
 	}
 
 }
