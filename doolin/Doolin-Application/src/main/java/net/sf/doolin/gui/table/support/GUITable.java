@@ -58,7 +58,7 @@ public class GUITable extends JTable {
 	}
 
 	protected void setupColumn(int colIndex, TableColumn tableColumn, Column column, boolean setupWidth) {
-		log.debug("Setup the column n°" + colIndex);
+		log.debug("Setup the column no" + colIndex);
 		// Renderer
 		setupRenderer(colIndex, tableColumn, column);
 		// TODO Sorting

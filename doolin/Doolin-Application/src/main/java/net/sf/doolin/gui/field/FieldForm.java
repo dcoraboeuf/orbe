@@ -1,5 +1,5 @@
 /*
- * Created on 15 août 07
+ * Created on 15 aoutt 07
  */
 package net.sf.doolin.gui.field;
 
