@@ -1,0 +1,55 @@
+<installation version="1.0">
+	<info>
+		<appname>${project.name}</appname>
+		<appversion>${project.version}</appversion>
+		<appsubpath>${project.name}</appsubpath>
+		<url>${project.url}</url>
+		<authors>
+			<author name="Damien Coraboeuf" email="dcoraboeuf@yahoo.fr" />
+		</authors>
+		<javaversion>1.6</javaversion>
+	</info>
+	<variables>
+		<variable name="InstallerFrame.logfilePath"
+			value="$INSTALL_PATH/install.log" />
+		<variable name="desktopshortcutcheckboxenabled" value="true" />
+	</variables>
+	<guiprefs height="600" resizable="yes" width="800">
+		<laf name="metouia">
+			<os family="unix" />
+		</laf>
+		<laf name="looks">
+			<os family="windows" />
+			<param name="variant" value="extwin" />
+		</laf>
+	</guiprefs>
+	<locale>
+		<langpack iso3="eng" />
+		<langpack iso3="fra" />
+	</locale>
+	<resources>
+		<res src="classes/install/default_shortcut_specification.xml"
+	    	id="shortcutSpec.xml"/>
+		<!--res src="classes/install/unix_shortcut_specification.xml"
+		    id="Unix_shortcutSpec.xml"/-->
+	</resources>
+	<panels>
+		<panel classname="HelloPanel" />
+		<panel classname="TargetPanel" />
+		<panel classname="ShortcutPanel" />
+		<panel classname="InstallPanel" />
+		<panel classname="FinishPanel" />
+	</panels>
+	<packs>
+		<pack name="Core" required="yes">
+			<description>Core packages</description>
+			<fileset dir="." targetdir="$INSTALL_PATH" includes="*.jar" />
+			<fileset dir="." targetdir="$INSTALL_PATH" includes="${project.name}-${project.version}.exe" />
+			<fileset dir="." targetdir="$INSTALL_PATH" includes="${project.name}-${project.version}-uninstall.exe" />
+			<fileset dir="." targetdir="$INSTALL_PATH"
+				includes="dependency/*.jar" />
+			<fileset dir="classes/install" targetdir="$INSTALL_PATH" includes="*.ico"/>
+		</pack>
+	</packs>
+	<native type="izpack" name="ShellLink.dll"/>
+</installation>

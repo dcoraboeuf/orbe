@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id$ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+	   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+	
+	<bean
+		id="DialogMapSettings"
+		class="net.sf.doolin.gui.form.FormView">
+		<property name="title" value="#DialogMapSettings.title"/>
+		<property name="iconId" value="IconMapSettings"/>
+		<property name="size">
+			<bean class="net.sf.doolin.gui.core.view.DefaultSize">
+				<property name="pack" value="true"/>
+			</bean>
+		</property>
+		<property name="form">
+			<bean class="net.sf.doolin.gui.form.support.DefaultForm">
+				<property name="layout">
+					<bean class="net.sf.doolin.gui.form.layout.TabLayout">
+						<property name="tabs">
+							<list>
+								<bean class="net.sf.doolin.gui.form.layout.Tab">
+									<property name="title" value="DialogMapSettings.TabGeneral"/>
+									<property name="layout">
+										<bean class="net.sf.doolin.gui.form.layout.FormBasedLayout">
+											<property name="columnSpecs" value="3dlu, pref, 3dlu, pref:grow, 3dlu"/>
+											<property name="rowSpecs" value="3dlu, pref:grow, 3dlu, pref, 3dlu, pref:grow, 3dlu"/>
+											<property name="fieldList">
+												<list>
+													<!-- Scale -->
+													<bean class="net.sf.doolin.gui.field.FieldForm">
+														<property name="constraint" value="2,2,3,1"/>
+														<property name="title" value="Config.Settings.scale"/>
+														<property name="border" value="true"/>
+														<property name="property" value="this"/>
+														<property name="subForm">
+															<bean class="net.sf.doolin.gui.form.support.DefaultForm">
+																<property name="layout">
+																	<bean class="net.sf.doolin.gui.form.layout.FormBasedLayout">
+																		<property name="columnSpecs" value="2dlu, pref, 2dlu, pref:grow, 2dlu"/>
+																		<property name="rowSpecs" value="2dlu, pref, 2dlu, pref, 2dlu"/>
+																		<property name="fieldList">
+																			<list>
+																				<!-- Unit -->
+																				<bean class="net.sf.doolin.gui.field.FieldStatic">
+																					<property name="constraint" value="2,2"/>
+																					<property name="text" value="#Config.Settings.scale.unit"/>
+																				</bean>
+																				<bean class="net.sf.doolin.gui.field.FieldCombo">
+																					<property name="constraint" value="4,2"/>
+																					<property name="name" value="Config.Settings.scale.unit"/>
+																					<property name="property" value="settings.scale.unit"/>
+																					<property name="itemProvider">
+																						<bean class="net.sf.doolin.gui.field.helper.EnumItemProvider">
+																							<property name="enumType" value="orbe.model.Unit"/>
+																						</bean>
+																					</property>
+																					<property name="labelProvider">
+																						<bean class="net.sf.doolin.gui.field.helper.LocalizedLabelInfoProvider">
+																							<property name="prefix" value="Unit."/>
+																						</bean>
+																					</property>
+																				</bean>
+																				<!-- Value -->
+																				<bean class="net.sf.doolin.gui.field.FieldStatic">
+																					<property name="constraint" value="2,4"/>
+																					<property name="text" value="#Config.Settings.scale.value"/>
+																				</bean>
+																				<bean class="net.sf.doolin.gui.field.FieldDecimal">
+																					<property name="constraint" value="4,4"/>
+																					<property name="name" value="Config.Settings.scale.value"/>
+																					<property name="property" value="settings.scale.value"/>
+																					<property name="fractionDigits" value="2"/>
+																					<property name="integerDigits" value="5"/>
+																					<property name="fractionShowAll" value="false"/>
+																					<property name="min" value="0"/>
+																				</bean>
+																			</list>
+																		</property>
+																	</bean>
+																</property>
+															</bean>
+														</property>
+													</bean>
+													<!-- Scale end -->
+													<!-- Background Color -->
+													<bean class="net.sf.doolin.gui.field.FieldStatic">
+														<property name="constraint" value="2,4"/>
+														<property name="text" value="#Config.Settings.background"/>
+													</bean>
+													<bean class="net.sf.doolin.gui.field.FieldColor">
+														<property name="constraint" value="4,4"/>
+														<property name="name" value="Config.Settings.background"/>
+														<property name="property" value="settings.background"/>
+													</bean>
+													<!-- Grid -->
+													<bean class="net.sf.doolin.gui.field.FieldForm">
+														<property name="constraint" value="2,6,3,1"/>
+														<property name="title" value="Config.Settings.Grid"/>
+														<property name="border" value="true"/>
+														<property name="property" value="this"/>
+														<property name="subForm">
+															<bean class="net.sf.doolin.gui.form.support.DefaultForm">
+																<property name="layout">
+																	<bean class="net.sf.doolin.gui.form.layout.FormBasedLayout">
+																		<property name="columnSpecs" value="2dlu, pref, 2dlu, pref:grow, 2dlu"/>
+																		<property name="rowSpecs" value="2dlu, pref, 2dlu, pref, 2dlu"/>
+																		<property name="fieldList">
+																			<list>
+																				<bean class="net.sf.doolin.gui.field.FieldCheck">
+																					<property name="constraint" value="2,2,3,1"/>
+																					<property name="name" value="Config.Settings.Grid.transparent"/>
+																					<property name="property" value="settings.grid.transparent"/>
+																				</bean>
+																				<bean class="net.sf.doolin.gui.field.FieldStatic">
+																					<property name="constraint" value="2,4"/>
+																					<property name="text" value="#Config.Settings.Grid.color"/>
+																				</bean>
+																				<bean class="net.sf.doolin.gui.field.FieldColor">
+																					<property name="constraint" value="4,4"/>
+																					<property name="name" value="Config.Settings.Grid.color"/>
+																					<property name="property" value="settings.grid.color"/>
+																				</bean>
+																			</list>
+																		</property>
+																	</bean>
+																</property>
+															</bean>
+														</property>
+													</bean>
+													<!-- Grid end -->
+												</list>
+											</property>
+										</bean>
+									</property>
+								</bean>
+								<bean class="net.sf.doolin.gui.form.layout.Tab">
+									<property name="title" value="DialogMapSettings.TabLayers"/>
+									<property name="layout">
+										<bean class="net.sf.doolin.gui.form.layout.SingleLayout">
+											<property name="field">
+												<bean class="net.sf.doolin.gui.field.FieldMultipleSelection">
+													<property name="property" value="visibleLayers"/>
+													<property name="itemProvider">
+														<bean class="net.sf.doolin.gui.field.helper.EnumItemProvider">
+															<property name="enumType" value="orbe.gui.map.renderer.Layer"/>
+														</bean>
+													</property>
+													<property name="labelProvider">
+														<bean class="net.sf.doolin.gui.field.helper.LocalizedLabelInfoProvider">
+															<property name="prefix" value="Layer."/>
+														</bean>
+													</property>
+												</bean>
+											</property>
+										</bean>
+									</property>
+								</bean>
+							</list>
+						</property>
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+</beans>

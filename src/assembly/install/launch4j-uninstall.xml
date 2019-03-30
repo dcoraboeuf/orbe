@@ -1,0 +1,22 @@
+<launch4jConfig>
+	<headerType>gui</headerType>
+	<outfile>${project.build.directory}/${project.name}-${project.version}-uninstall.exe</outfile>
+	<jar>Uninstaller/uninstaller.jar</jar>
+	<dontWrapJar>true</dontWrapJar>
+	<icon>${project.build.directory}/classes/install/${project.name}.ico</icon>
+	<jre>
+		<minVersion>1.6.0</minVersion>
+	</jre>
+	<versionInfo>
+		<fileVersion>${orbe.version}.0</fileVersion>
+		<txtFileVersion>${project.version}</txtFileVersion>
+		<fileDescription>${project.description}</fileDescription>
+		<copyright>Damien Coraboeuf</copyright>
+		<productVersion>${orbe.version}.0</productVersion>
+		<txtProductVersion>${project.version}</txtProductVersion>
+		<productName>${project.name} Uninstaller</productName>
+		<companyName>Doolin</companyName>
+		<internalName>${project.name}-${project.version}-uninstall</internalName>
+		<originalFilename>${project.name}-${project.version}-uninstall.exe</originalFilename>
+	</versionInfo>
+</launch4jConfig>

@@ -1,0 +1,216 @@
+<!-- Terrains -->
+<!-- $Id: Terrains.xml,v 1.1 2006/10/09 10:24:36 guinnessman Exp $ -->
+<terrains>
+	<terrain id="1">
+		<nom>Etendue deau</nom>
+		<couleur>3399FF</couleur>
+	</terrain>
+	<terrain id="2">
+		<nom>Plaine</nom>
+		<couleur>99CC00</couleur>
+	</terrain>
+	<terrain id="3">
+		<nom>Collines</nom>
+		<couleur>CC9900</couleur>
+		<ref-symbole id="15"/>
+	</terrain>
+	<terrain id="4">
+		<nom>Montagnes</nom>
+		<couleur>555555</couleur>
+		<ref-symbole id="13"/>
+	</terrain>
+	<terrain id="5">
+		<nom>Haute montagne</nom>
+		<couleur>FFFFFF</couleur>
+		<ref-symbole id="13"/>
+	</terrain>
+	<terrain id="6">
+		<nom>Prairie</nom>
+		<couleur>99CC00</couleur>
+		<ref-symbole id="22"/>
+	</terrain>
+	<terrain id="7">
+		<nom>Prairie valonnée</nom>
+		<couleur>99CC00</couleur>
+		<ref-symbole id="15"/>
+	</terrain>
+	<terrain id="8">
+		<nom>Savane</nom>
+		<couleur>CCCC00</couleur>
+		<ref-symbole id="22"/>
+	</terrain>
+	<terrain id="9">
+		<nom>Forêt clairsemée</nom>
+		<couleur>00BA00</couleur>
+		<ref-symbole id="18"/>
+	</terrain>
+	<terrain id="10">
+		<nom>Forêt sèche</nom>
+		<couleur>99CC00</couleur>
+		<ref-symbole id="19"/>
+	</terrain>
+	<terrain id="11">
+		<nom>Forêt dense</nom>
+		<couleur>00AA00</couleur>
+		<ref-symbole id="19"/>
+	</terrain>
+	<terrain id="12">
+		<nom>Forêt vallonnée</nom>
+		<couleur>00AA00</couleur>
+		<ref-symbole id="21"/>
+	</terrain>
+	<terrain id="13">
+		<nom>Vallons boisés</nom>
+		<couleur>99CC00</couleur>
+		<ref-symbole id="21"/>
+	</terrain>
+	<terrain id="14">
+		<nom>Collines boisées</nom>
+		<couleur>00AA00</couleur>
+		<ref-symbole id="15"/>
+	</terrain>
+	<terrain id="15">
+		<nom>Forêt de sapins</nom>
+		<couleur>008800</couleur>
+		<ref-symbole id="37"/>
+	</terrain>
+	<terrain id="16">
+		<nom>Montagne boisée</nom>
+		<couleur>008800</couleur>
+		<ref-symbole id="13"/>
+	</terrain>
+	<terrain id="17">
+		<nom>Jungle</nom>
+		<couleur>008800</couleur>
+		<ref-symbole id="20"/>
+	</terrain>
+	<terrain id="18">
+		<nom>Jungle vallonée</nom>
+		<couleur>008800</couleur>
+		<ref-symbole id="15"/>
+	</terrain>
+	<terrain id="19">
+		<nom>Marais</nom>
+		<couleur>339966</couleur>
+		<ref-symbole id="23"/>
+	</terrain>
+	<terrain id="20">
+		<nom>Marécage</nom>
+		<couleur>999933</couleur>
+		<ref-symbole id="24"/>
+	</terrain>
+	<terrain id="21">
+		<nom>Toundra</nom>
+		<couleur>999900</couleur>
+		<ref-symbole id="25"/>
+	</terrain>
+	<terrain id="22">
+		<nom>Brouissailles</nom>
+		<couleur>999900</couleur>
+		<ref-symbole id="22"/>
+	</terrain>
+	<terrain id="23">
+		<nom>Friches</nom>
+		<couleur>999900</couleur>
+		<ref-symbole id="18"/>
+	</terrain>
+	<terrain id="24">
+		<nom>Landes</nom>
+		<couleur>999900</couleur>
+		<ref-symbole id="15"/>
+	</terrain>
+	<terrain id="25">
+		<nom>Désert</nom>
+		<couleur>FFCC33</couleur>
+		<ref-symbole id="25"/>
+	</terrain>
+	<terrain id="26">
+		<nom>Palmeraies</nom>
+		<couleur>FFCC33</couleur>
+		<ref-symbole id="20"/>
+	</terrain>
+	<terrain id="27">
+		<nom>Bad lands</nom>
+		<couleur>FFCC33</couleur>
+		<ref-symbole id="16"/>
+	</terrain>
+	<terrain id="28">
+		<nom>Désert de sel</nom>
+		<couleur>FFFF99</couleur>
+	</terrain>
+	<terrain id="29">
+		<nom>Lac de lave</nom>
+		<couleur>880000</couleur>
+	</terrain>
+	<terrain id="30">
+		<nom>Lac de feu</nom>
+		<couleur>EE0000</couleur>
+	</terrain>
+	<terrain id="31">
+		<nom>Récifs</nom>
+		<couleur>3399FF</couleur>
+		<ref-symbole id="25"/>
+	</terrain>
+	<terrain id="32">
+		<nom>Côte déchiquetée</nom>
+		<couleur>339999</couleur>
+		<ref-symbole id="16"/>
+	</terrain>
+	<terrain id="33">
+		<nom>Glacier</nom>
+		<couleur>DDDDDD</couleur>
+		<ref-symbole id="14"/>
+	</terrain>
+	<terrain id="34">
+		<nom>Glacier accidenté</nom>
+		<couleur>DDDDDD</couleur>
+		<ref-symbole id="16"/>
+	</terrain>
+	<terrain id="35">
+		<nom>Montagnes glacées</nom>
+		<couleur>DDDDDD</couleur>
+		<ref-symbole id="13"/>
+	</terrain>
+	<terrain id="36">
+		<nom>Prairie gelée</nom>
+		<couleur>DDDDDD</couleur>
+		<ref-symbole id="22"/>
+	</terrain>
+	<terrain id="37">
+		<nom>Banquise</nom>
+		<couleur>99CCCC</couleur>
+	</terrain>
+	<terrain id="38">
+		<nom>Banquise permanente</nom>
+		<couleur>DDDDDD</couleur>
+	</terrain>
+	<terrain id="39">
+		<nom>Ville</nom>
+		<couleur>999999</couleur>
+	</terrain>
+	<terrain id="40">
+		<nom>Landes boisées</nom>
+		<couleur>999900</couleur>
+		<ref-symbole id="21"/>
+	</terrain>
+	<terrain id="41">
+		<nom>Hautes collines</nom>
+		<couleur>663300</couleur>
+		<ref-symbole id="13"/>
+	</terrain>
+	<terrain id="42">
+		<nom>Forêt accidentée</nom>
+		<couleur>00BB00</couleur>
+		<ref-symbole id="16"/>
+	</terrain>
+	<terrain id="43">
+		<nom>Marais boisés</nom>
+		<couleur>669966</couleur>
+		<ref-symbole id="18"/>
+	</terrain>
+	<terrain id="44">
+		<nom>Forêt inondée</nom>
+		<couleur>00AA00</couleur>
+		<ref-symbole id="23"/>
+	</terrain>
+</terrains>

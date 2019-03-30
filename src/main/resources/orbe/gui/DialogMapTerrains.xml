@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id$ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+	   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+	
+	
+	<bean
+		id="DialogMapTerrains"
+		class="net.sf.doolin.gui.form.FormView">
+		<property name="title" value="#DialogMapTerrains.title"/>
+		<property name="iconId" value="IconTool.HexTerrain"/>
+		<property name="size">
+			<bean class="net.sf.doolin.gui.core.view.DefaultSize">
+				<property name="width" value="600"/>
+				<property name="height" value="300"/>
+			</bean>
+		</property>
+		<property name="form">
+			<bean class="net.sf.doolin.gui.form.support.DefaultForm">
+				<property name="layout">
+					<bean class="net.sf.doolin.gui.form.layout.SingleLayout">
+						<property name="field">
+							<bean class="orbe.gui.map.FieldRepositoryTerrains">
+								<property name="property" value="terrains"/>
+								<property name="formDetail">
+									<bean class="net.sf.doolin.gui.form.support.DefaultForm">
+										<property name="layout">
+											<bean class="net.sf.doolin.gui.form.layout.FormBasedLayout">
+												<property name="columnSpecs" value="3dlu,pref,3dlu,pref:grow,3dlu"/>
+												<property name="rowSpecs" value="3dlu,pref,3dlu,pref,3dlu,pref,3dlu,pref,3dlu"/>
+												<property name="fieldList">
+													<list>
+														<bean class="net.sf.doolin.gui.field.FieldStatic">
+															<property name="constraint" value="2,2,3,1"/>
+															<property name="property" value="id"/>
+															<property name="text" value="#Terrain.ID $fieldData"/>
+														</bean>
+														<bean class="net.sf.doolin.gui.field.FieldStatic">
+															<property name="constraint" value="2,4"/>
+															<property name="text" value="#Terrain.Name"/>
+														</bean>
+														<bean class="net.sf.doolin.gui.field.FieldText">
+															<property name="constraint" value="4,4"/>
+															<property name="name" value="Terrain.Name"/>
+															<property name="property" value="name"/>
+															<property name="columns" value="20"/>
+															<property name="maxlength" value="20"/>
+															<property name="validators">
+																<list>
+																	<bean class="net.sf.doolin.gui.field.validator.MandatoryValidator"/>
+																</list>
+															</property>
+														</bean>
+														<bean class="net.sf.doolin.gui.field.FieldStatic">
+															<property name="constraint" value="2,6"/>
+															<property name="text" value="#Terrain.Color"/>
+														</bean>
+														<bean class="net.sf.doolin.gui.field.FieldColor">
+															<property name="constraint" value="4,6"/>
+															<property name="name" value="Terrain.Color"/>
+															<property name="property" value="color"/>
+														</bean>
+														<bean class="net.sf.doolin.gui.field.FieldStatic">
+															<property name="constraint" value="2,8"/>
+															<property name="text" value="#Terrain.Symbol"/>
+														</bean>
+														<bean class="net.sf.doolin.gui.field.FieldCombo">
+															<property name="constraint" value="4,8"/>
+															<property name="name" value="Terrain.Symbol"/>
+															<property name="property" value="symbol"/>
+															<property name="itemProvider">
+																<bean class="orbe.gui.helper.SymbolWithNullItemProvider"/>
+															</property>
+															<property name="cellRenderer">
+																<bean class="orbe.gui.map.CellRendererSymbol"/>
+															</property>
+														</bean>
+													</list>
+												</property>
+											</bean>
+										</property>
+									</bean>
+								</property>
+							</bean>
+						</property>
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id$ -->
+<oxml xmlns="http://doolin-guif.sourceforge.net/schema/oxml">
+	<for node="/orbe">
+		<create id="Map" class="orbe.model.impl.DefaultOrbeMap" root="true">
+			<check node="version" value="2.0"/>
+			<property name="width"/>
+			<property name="height"/>
+			<for node="settings">
+				<create class="orbe.model.OrbeSettings" property="settings">
+					<property name="scale.unit">
+						<adapter class="net.sf.doolin.oxml.adapter.EnumOXMLAdapter">
+							<param name="type" value="orbe.model.Unit"/>
+						</adapter>
+					</property>
+					<property name="scale.value"/>
+					<property name="background">
+						<adapter class="orbe.model.io.ColorOXMLAdapter"/>
+					</property>
+					<property name="grid.transparent"/>
+					<property name="grid.color">
+						<adapter class="orbe.model.io.ColorOXMLAdapter"/>
+					</property>
+					<!-- Terrain styles -->
+					<for node="terrains">
+						<create class="orbe.model.style.RepositoryHexTerrain" property="terrains">
+							<for node="terrain">
+								<create class="orbe.model.style.DefaultHexTerrain" setter="addTerrain" post="true">
+									<property name="id"/>
+									<property name="name"/>
+									<property name="color">
+										<adapter class="orbe.model.io.ColorOXMLAdapter"/>
+									</property>
+									<property name="symbol">
+										<adapter class="orbe.model.io.SymbolOXMLAdapter"/>
+									</property>
+								</create>
+							</for>
+						</create>
+					</for>
+					<!-- Text styles -->
+					<for node="textStyles">
+						<create class="orbe.model.style.RepositoryTextStyle" property="textStyles">
+							<for node="textStyle">
+								<create class="orbe.model.style.TextStyle" setter="addStyle" post="true">
+									<property name="id"/>
+									<property name="name"/>
+									<property name="fontName"/>
+									<property name="fontSize"/>
+									<property name="fontBold"/>
+									<property name="fontItalic"/>
+									<property name="fontColor">
+										<adapter class="orbe.model.io.ColorOXMLAdapter"/>
+									</property>
+									<property name="shadow"/>
+									<property name="shadowColor">
+										<adapter class="orbe.model.io.ColorOXMLAdapter"/>
+									</property>
+								</create>
+							</for>
+						</create>
+					</for>
+					<!-- Line styles -->
+					<for node="lineStyles">
+						<create class="orbe.model.style.RepositoryStyleLine" property="styleLineList">
+							<for node="lineStyle">
+								<create class="orbe.model.style.StyleLine" setter="addStyle" post="true">
+									<property name="id"/>
+									<property name="name"/>
+									<property name="thickness"/>
+									<property name="color">
+										<adapter class="orbe.model.io.ColorOXMLAdapter"/>
+									</property>
+									<property name="transparent"/>
+									<property name="type">
+										<adapter class="net.sf.doolin.oxml.adapter.EnumOXMLAdapter">
+											<param name="type" value="orbe.model.style.LineType"/>
+										</adapter>
+									</property>
+									<property name="dot">
+										<adapter class="net.sf.doolin.oxml.adapter.EnumOXMLAdapter">
+											<param name="type" value="orbe.model.style.LineDotType"/>
+										</adapter>
+									</property>
+									<property name="grad">
+										<adapter class="net.sf.doolin.oxml.adapter.EnumOXMLAdapter">
+											<param name="type" value="orbe.model.style.LineGradType"/>
+										</adapter>
+									</property>
+								</create>
+							</for>
+						</create>
+					</for>
+					<property name="encodedVisibleLayers"/>
+				</create>
+				<!-- End create settings -->
+			</for>
+			<!-- End for settings -->
+			<!-- Texts -->
+			<for node="textList">
+				<create class="orbe.model.element.text.OrbeTextList" property="textList">
+					<for node="text">
+						<create class="orbe.model.element.text.OrbeText" setter="add">
+							<property name="value"/>
+							<property name="position">
+								<adapter class="orbe.model.io.HXPoint2DOXMLAdapter"/>
+							</property>
+							<property name="rotation"/>
+							<property name="style">
+								<adapter class="orbe.model.io.TextStyleOXMLAdapter"/>
+							</property>
+						</create>
+					</for>
+				</create>
+			</for>
+			<!-- End for textList -->
+			<!-- Lines -->
+			<for node="lineList">
+				<create class="orbe.model.element.line.OrbeLineList" property="lineList">
+					<for node="child::*">
+						<!-- Poly -->
+						<if test="local-name() = 'polyLine'">
+							<create class="orbe.model.element.line.OrbePolyLine" setter="add" post="true">
+								<property name="style">
+									<adapter class="orbe.model.io.LineStyleOXMLAdapter"/>
+								</property>
+								<for node="point">
+									<create factory="orbe.model.io.HXPoint2DOXMLInstanceFactory" setter="append"/>
+								</for>
+								<property name="gradInverse"/>
+							</create>
+						</if>
+						<!-- Hex -->
+						<if test="local-name() = 'hexLine'">
+							<create class="orbe.model.element.line.OrbeHexLine" setter="add" post="true">
+								<property name="style">
+									<adapter class="orbe.model.io.LineStyleOXMLAdapter"/>
+								</property>
+								<for node="point">
+									<create factory="orbe.model.io.HXPointOXMLInstanceFactory" setter="append"/>
+								</for>
+								<property name="gradInverse"/>
+							</create>
+						</if>
+						<!-- Edge -->
+						<if test="local-name() = 'edgeLine'">
+							<create class="orbe.model.element.line.OrbeEdgeLine" setter="add" post="true">
+								<property name="style">
+									<adapter class="orbe.model.io.LineStyleOXMLAdapter"/>
+								</property>
+								<for node="point">
+									<create factory="orbe.model.io.HXCornerOXMLInstanceFactory" setter="append"/>
+								</for>
+								<property name="gradInverse"/>
+							</create>
+						</if>
+					</for>
+				</create>
+			</for>
+			<!-- End for lineList -->
+			<!-- Hex map -->
+			<for node="hexMap">
+				<create factory="orbe.model.io.HexMapOXMLFactory" property="hexMap" post="true"/>
+			</for>
+			<!-- End hexMap -->
+		</create>
+		<!-- End create map -->
+	</for>
+	<!-- End for /orbe -->
+	
+</oxml>

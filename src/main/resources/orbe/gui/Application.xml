@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- $Id: Application.xml,v 1.4 2007/01/15 15:14:50 guinnessman Exp $ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+	   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+	
+	<!-- Application manager -->
+	<bean
+		id="net.sf.doolin.gui.core.ApplicationManager"
+		class="net.sf.doolin.gui.core.support.DefaultApplicationManager">
+		<property name="startup">
+			<bean class="orbe.gui.Startup">
+				<property name="frame" ref="FrameMain"/>
+			</bean>
+		</property>
+		<property name="plugins">
+			<list>
+				<bean class="net.sf.doolin.gui.core.plugin.PluginLF">
+					<property name="lfClassName" value="com.jgoodies.plaf.plastic.PlasticLookAndFeel"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Localization bundles -->
+	<bean
+		class="net.sf.doolin.gui.core.support.StringBundles">
+		<property name="bundleList">
+			<list>
+				<value>orbe.gui.Strings</value>
+				<value>orbe.gui.Version</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Validation on place -->
+	<bean
+		id="net.sf.doolin.gui.core.validation.ValidationReporter"
+		class="net.sf.doolin.gui.core.validation.DelegateValidationReporter"/>
+	
+	<!-- Icon manager -->
+	<bean
+		id="net.sf.doolin.gui.core.icon.IconManager"
+		class="net.sf.doolin.gui.core.icon.SimpleIconManager">
+		<property name="properties">
+			<util:properties location="classpath:orbe/gui/icon/Index.properties"/>
+		</property>
+		<property name="prefix" value="/orbe/gui/icon/"/>
+	</bean>
+	
+	<!-- Cursors -->
+	<bean
+		id="net.sf.doolin.gui.service.CursorFactory"
+		class="net.sf.doolin.gui.service.support.DefaultCursorFactory">
+		<property name="properties">
+			<util:properties location="classpath:orbe/gui/cursor/Cursor.properties"/>
+		</property>
+	</bean>
+	
+	<!-- Template extension -->
+	<bean
+		id="net.sf.doolin.gui.ext.template.TemplateManager"
+		class="net.sf.doolin.gui.ext.template.support.DefaultTemplateManager"/>
+	
+	<!-- Main frame -->
+	<bean
+		id="FrameMain"
+		class="orbe.gui.map.OrbeContent">
+		<property name="title" value="#FrameMain.title($viewData)"/>
+		<property name="iconId" value="IconOrbe"/>
+		<property name="size">
+			<bean class="net.sf.doolin.gui.core.view.DefaultSize">
+				<property name="width" value="600"/>
+				<property name="height" value="500"/>
+				<property name="saveInPrefs" value="true"/>
+			</bean>
+		</property>
+		<property name="closeAction" ref="ActionExit"/>
+		<property name="menubar">
+			<bean class="net.sf.doolin.gui.core.view.Menubar">
+				<property name="menus">
+					<list>
+						<bean class="net.sf.doolin.gui.core.view.Menu">
+							<property name="name" value="MenuFile"/>
+							<property name="items">
+								<list>
+									<bean class="net.sf.doolin.gui.core.view.MenuAction">
+										<property name="action" ref="ActionNew"/>
+									</bean>
+									<bean class="net.sf.doolin.gui.core.view.MenuAction">
+										<property name="action" ref="ActionOpen"/>
+									</bean>
+									<bean class="net.sf.doolin.gui.core.view.MenuAction">
+										<property name="action" ref="ActionClose"/>
+									</bean>
+									<bean class="net.sf.doolin.gui.core.view.MenuSep"/>
+									<bean class="net.sf.doolin.gui.core.view.Menu">
+										<property name="name" value="MenuRecentFiles"/>
+										<property name="plugins">
+											<list>
+												<bean class="orbe.gui.main.PluginMenuRecentFiles"/>
+											</list>
+										</property>
+									</bean>
+									<bean class="net.sf.doolin.gui.core.view.MenuSep"/>
+									<bean class="net.sf.doolin.gui.core.view.MenuAction">
+										<property name="action" ref="ActionSave"/>
+									</bean>
+									<bean class="net.sf.doolin.gui.core.view.MenuAction">
+										<property name="action" ref="ActionSaveAs"/>
+									</bean>
+									<bean class="net.sf.doolin.gui.core.view.MenuSep"/>
+									<bean class="net.sf.doolin.gui.core.view.MenuAction">
+										<property name="action" ref="ActionExport"/>
+									</bean>
+									<bean class="net.sf.doolin.gui.core.view.MenuSep"/>
+									<bean class="net.sf.doolin.gui.core.view.MenuAction">
+										<property name="action" ref="ActionExit"/>
+									</bean>
+								</list>
+							</property>
+						</bean>
+						<bean class="net.sf.doolin.gui.core.view.Menu">
+							<property name="name" value="MenuEdit"/>
+							<property name="items">
+								<list>
+									<bean class="net.sf.doolin.gui.core.view.MenuAction">
+										<property name="action" ref="ActionUndo"/>
+									</bean>
+									<bean class="net.sf.doolin.gui.core.view.MenuAction">
+										<property name="action" ref="ActionRedo"/>
+									</bean>
+								</list>
+							</property>
+						</bean>
+						<bean class="net.sf.doolin.gui.core.view.Menu">
+							<property name="name" value="MenuMap"/>
+							<property name="items">
+								<list>
+									<bean class="net.sf.doolin.gui.core.view.MenuAction">
+										<property name="action" ref="ActionMapSettings"/>
+									</bean>
+									<bean class="net.sf.doolin.gui.core.view.MenuAction">
+										<property name="action" ref="ActionMapTerrains"/>
+									</bean>
+									<bean class="net.sf.doolin.gui.core.view.MenuAction">
+										<property name="action" ref="ActionMapTextStyles"/>
+									</bean>
+									<bean class="net.sf.doolin.gui.core.view.MenuAction">
+										<property name="action" ref="ActionMapStyleLine"/>
+									</bean>
+								</list>
+							</property>
+						</bean>
+						<bean class="net.sf.doolin.gui.core.view.Menu">
+							<property name="name" value="MenuHelp"/>
+							<property name="items">
+								<list>
+									<bean class="net.sf.doolin.gui.core.view.MenuAction">
+										<property name="action" ref="ActionHelp"/>
+									</bean>
+									<bean class="net.sf.doolin.gui.core.view.MenuSep"/>
+									<bean class="net.sf.doolin.gui.core.view.MenuAction">
+										<property name="action">
+											<bean class="net.sf.doolin.gui.core.action.ActionAbout">
+												<property name="name" value="ActionAbout"/>
+												<property name="text" value="#ActionAbout.text"/>
+												<property name="logo" value="IconLogo"/>
+												<property name="layout" value="top"/>
+												<property name="html" value="true"/>
+											</bean>
+										</property>
+									</bean>
+								</list>
+							</property>
+						</bean>
+					</list>
+				</property>
+			</bean>
+		</property>
+		<property name="toolbars">
+			<list>
+				<bean class="net.sf.doolin.gui.core.view.DefaultToolbar">
+					<property name="floatable" value="false"/>
+					<property name="items">
+						<list>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarAction">
+								<property name="action" ref="ActionNew"/>
+							</bean>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarAction">
+								<property name="action" ref="ActionOpen"/>
+							</bean>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarAction">
+								<property name="action" ref="ActionClose"/>
+							</bean>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarSep"/>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarAction">
+								<property name="action" ref="ActionSave"/>
+							</bean>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarAction">
+								<property name="action" ref="ActionSaveAs"/>
+							</bean>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarSep"/>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarAction">
+								<property name="action" ref="ActionUndo"/>
+							</bean>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarAction">
+								<property name="action" ref="ActionRedo"/>
+							</bean>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarSep"/>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarAction">
+								<property name="action" ref="ActionMapSettings"/>
+							</bean>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarSep"/>
+							<bean class="orbe.gui.main.ToolbarZoom"/>
+							<bean class="orbe.gui.main.ToolbarTool">
+								<property name="toolId" value="Zoom"/>
+							</bean>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarSep"/>
+							<bean class="orbe.gui.main.ToolbarTool">
+								<property name="toolId" value="Hand"/>
+							</bean>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarSep"/>
+							<bean class="orbe.gui.main.ToolbarTool">
+								<property name="toolId" value="HexTerrain"/>
+							</bean>
+							<bean class="orbe.gui.main.ToolbarTool">
+								<property name="toolId" value="HexPaint"/>
+							</bean>
+							<bean class="orbe.gui.main.ToolbarTool">
+								<property name="toolId" value="HexSymbol"/>
+							</bean>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarSep"/>
+							<bean class="orbe.gui.main.ToolbarTool">
+								<property name="toolId" value="Text"/>
+							</bean>
+							<bean class="orbe.gui.main.ToolbarTool">
+								<property name="toolId" value="Line"/>
+							</bean>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarSep"/>
+							<bean class="net.sf.doolin.gui.core.view.ToolbarAction">
+								<property name="action" ref="ActionHelp"/>
+							</bean>
+						</list>
+					</property>
+				</bean>
+				<bean class="orbe.gui.map.options.ToolOptionsBar">
+					<property name="floatable" value="false"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Dialog: New map -->
+	<bean
+		id="DialogNew"
+		class="net.sf.doolin.gui.form.FormView">
+		<property name="title" value="#DialogNew.title"/>
+		<property name="iconId" value="IconNew"/>
+		<property name="size">
+			<bean class="net.sf.doolin.gui.core.view.DefaultSize">
+				<property name="pack" value="true"/>
+			</bean>
+		</property>
+		<property name="form">
+			<bean class="net.sf.doolin.gui.form.support.DefaultForm">
+				<property name="layout">
+					<bean class="net.sf.doolin.gui.form.layout.FormBasedLayout">
+						<property name="columnSpecs" value="3dlu, pref, 3dlu, pref:grow, 3dlu"/>
+						<property name="rowSpecs" value="3dlu, pref, 3dlu, pref, 3dlu, pref:grow, 3dlu"/>
+						<property name="fieldList">
+							<list>
+								<!-- Width -->
+								<bean class="net.sf.doolin.gui.field.FieldStatic">
+									<property name="constraint" value="2,2"/>
+									<property name="text" value="#Config.width"/>
+								</bean>
+								<bean class="net.sf.doolin.gui.field.FieldInt">
+									<property name="constraint" value="4,2"/>
+									<property name="name" value="Config.width"/>
+									<property name="property" value="width"/>
+									<property name="min" value="10"/>
+									<property name="max" value="1000"/>
+								</bean>
+								<!-- Height -->
+								<bean class="net.sf.doolin.gui.field.FieldStatic">
+									<property name="constraint" value="2,4"/>
+									<property name="text" value="#Config.height"/>
+								</bean>
+								<bean class="net.sf.doolin.gui.field.FieldInt">
+									<property name="constraint" value="4,4"/>
+									<property name="name" value="Config.height"/>
+									<property name="property" value="height"/>
+									<property name="min" value="10"/>
+									<property name="max" value="1000"/>
+								</bean>
+								<!-- Scale section -->
+								<bean class="net.sf.doolin.gui.field.FieldForm">
+									<property name="constraint" value="2,6,3,1"/>
+									<property name="name" value="Config.Settings.scale"/>
+									<property name="title" value="Config.Settings.scale"/>
+									<property name="property" value="this"/>
+									<property name="border" value="true"/>
+									<property name="subForm">
+										<bean class="net.sf.doolin.gui.form.support.DefaultForm">
+											<property name="layout">
+												<bean class="net.sf.doolin.gui.form.layout.FormBasedLayout">
+													<property name="columnSpecs" value="3dlu, pref, 3dlu, pref:grow, 3dlu"/>
+													<property name="rowSpecs" value="3dlu, pref, 3dlu, pref, 3dlu"/>
+													<property name="fieldList">
+														<list>
+															<!-- Unit -->
+															<bean class="net.sf.doolin.gui.field.FieldStatic">
+																<property name="constraint" value="2,2"/>
+																<property name="text" value="#Config.Settings.scale.unit"/>
+															</bean>
+															<bean class="net.sf.doolin.gui.field.FieldCombo">
+																<property name="constraint" value="4,2"/>
+																<property name="name" value="Config.Settings.scale.unit"/>
+																<property name="property" value="settings.scale.unit"/>
+																<property name="itemProvider">
+																	<bean class="net.sf.doolin.gui.field.helper.EnumItemProvider">
+																		<property name="enumType" value="orbe.model.Unit"/>
+																	</bean>
+																</property>
+																<property name="labelProvider">
+																	<bean class="net.sf.doolin.gui.field.helper.LocalizedLabelInfoProvider">
+																		<property name="prefix" value="Unit."/>
+																	</bean>
+																</property>
+															</bean>
+															<!-- Value -->
+															<bean class="net.sf.doolin.gui.field.FieldStatic">
+																<property name="constraint" value="2,4"/>
+																<property name="text" value="#Config.Settings.scale.value"/>
+															</bean>
+															<bean class="net.sf.doolin.gui.field.FieldDecimal">
+																<property name="constraint" value="4,4"/>
+																<property name="name" value="Config.Settings.scale.value"/>
+																<property name="property" value="settings.scale.value"/>
+																<property name="fractionDigits" value="2"/>
+																<property name="integerDigits" value="5"/>
+																<property name="fractionShowAll" value="false"/>
+																<property name="min" value="0"/>
+															</bean>
+														</list>
+													</property>
+												</bean>
+											</property>
+										</bean>
+									</property>
+								</bean>
+							</list>
+						</property>
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- Dialog : Map settings -->
+	<import resource="DialogMapSettings.xml"/>
+	
+	<!-- Dialog : Terrains -->
+	<import resource="DialogMapTerrains.xml"/>
+	
+	<!-- Dialog : Text styles -->
+	<import resource="DialogMapTextStyles.xml"/>
+	
+	<!-- Dialog : Line styles -->
+	<import resource="DialogMapStyleLine.xml"/>
+	
+	<!-- Dialog : Export -->
+	<import resource="DialogExport.xml"/>
+	
+	<!-- Exit action -->
+	<bean
+		id="ActionExit"
+		class="orbe.gui.main.ActionExit"/>
+	
+	<!-- Action new -->
+	<bean
+		id="ActionNew"
+		class="orbe.gui.main.ActionNew"/>
+	
+	<!-- Action open -->
+	<bean
+		id="ActionOpen"
+		class="orbe.gui.main.ActionOpen"/>
+	
+	<!-- Action save -->
+	<bean
+		id="ActionSave"
+		class="orbe.gui.main.ActionSave"/>
+	
+	<!-- Action save as -->
+	<bean
+		id="ActionSaveAs"
+		class="orbe.gui.main.ActionSaveAs"/>
+	
+	<!-- Action close -->
+	<bean
+		id="ActionClose"
+		class="orbe.gui.main.ActionClose"/>
+	
+	<!-- Action help -->
+	<bean
+		id="ActionHelp"
+		class="net.sf.doolin.gui.core.action.ActionJavaHelp">
+		<property name="path" value="/orbe/gui/help/OrbeHelp.hs"/>
+	</bean>
+	
+	<!-- Action map settings -->
+	<bean
+		id="ActionMapSettings"
+		class="orbe.gui.map.ActionMapSettings"/>
+	
+	<!-- Action terrains -->
+	<bean
+		id="ActionMapTerrains"
+		class="orbe.gui.map.ActionMapTerrains"/>
+	
+	<!-- Action text styles -->
+	<bean
+		id="ActionMapTextStyles"
+		class="orbe.gui.map.ActionMapTextStyles"/>
+	
+	<!-- Action line styles -->
+	<bean
+		id="ActionMapStyleLine"
+		class="orbe.gui.map.ActionMapStyleLine"/>
+	
+	<!-- Action undo -->
+	<bean
+		id="ActionUndo"
+		class="orbe.gui.main.ActionUndo"/>
+	
+	<!-- Action redo -->
+	<bean
+		id="ActionRedo"
+		class="orbe.gui.main.ActionRedo"/>
+	
+	<!-- Action export -->
+	<bean
+		id="ActionExport"
+		class="orbe.gui.main.ActionExport"/>
+	
+</beans>

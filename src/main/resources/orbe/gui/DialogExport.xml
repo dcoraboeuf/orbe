@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id$ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+	   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+	
+	<bean
+		id="DialogExport"
+		class="net.sf.doolin.gui.form.FormView">
+		<property name="title" value="#DialogExport.title"/>
+		<property name="iconId" value="IconExport"/>
+		<property name="size">
+			<bean class="net.sf.doolin.gui.core.view.DefaultSize">
+				<property name="width" value="500"/>
+				<property name="height" value="400"/>
+			</bean>
+		</property>
+		<property name="form">
+			<bean class="net.sf.doolin.gui.form.support.DefaultForm">
+				<property name="layout">
+					<bean class="net.sf.doolin.gui.form.layout.FormBasedLayout">
+						<property name="columnSpecs" value="3dlu, pref, 3dlu, pref:grow, 3dlu"/>
+						<property name="rowSpecs" value="3dlu, pref, 3dlu, pref, 3dlu, pref, 3dlu, pref:grow, 3dlu"/>
+						<property name="fieldList">
+							<list>
+								<!-- Summary -->
+								<bean class="net.sf.doolin.gui.field.FieldStatic">
+									<property name="constraint" value="2,2,3,1"/>
+									<property name="text" value="#DialogExport.summary"/>
+								</bean>
+								<!-- File -->
+								<bean class="net.sf.doolin.gui.field.FieldStatic">
+									<property name="constraint" value="2,4"/>
+									<property name="text" value="#DialogExport.file"/>
+								</bean>
+								<bean class="net.sf.doolin.gui.field.FieldFile">
+									<property name="constraint" value="4,4"/>
+									<property name="name" value="DialogExport.file"/>
+									<property name="property" value="file"/>
+									<property name="mode" value="SAVE"/>
+									<property name="filter" value="#File.PNG.filter"/>
+									<property name="filterDescription" value="#File.PNG.description"/>
+									<property name="validators">
+										<list>
+											<bean class="net.sf.doolin.gui.field.validator.MandatoryValidator"/>
+										</list>
+									</property>
+								</bean>
+								<!-- Slices -->
+								<bean class="net.sf.doolin.gui.field.FieldCheck">
+									<property name="constraint" value="2,6,3,1"/>
+									<property name="name" value="DialogExport.slices"/>
+									<property name="property" value="slices"/>
+								</bean>
+								<!-- Slicing -->
+								<bean class="net.sf.doolin.gui.field.FieldForm">
+									<property name="constraint" value="2,8,3,1,f,f"/>
+									<property name="property" value="this"/>
+									<property name="border" value="true"/>
+									<property name="subForm">
+										<bean class="net.sf.doolin.gui.form.support.DefaultForm">
+											<property name="layout">
+												<bean class="net.sf.doolin.gui.form.layout.FormBasedLayout">
+													<property name="columnSpecs" value="2dlu,pref,2dlu,pref:grow,pref,2dlu,pref,pref:grow,2dlu"/>
+													<property name="rowSpecs" value="2dlu,pref,2dlu,pref:grow,pref,2dlu,pref,pref:grow,2dlu,pref,2dlu"/>
+													<property name="columnGroups" value="4,8"/>
+													<property name="rowGroups" value="4,8"/>
+													<property name="fieldList">
+														<list>
+															<!-- H -->
+															<bean class="net.sf.doolin.gui.field.FieldStatic">
+																<property name="constraint" value="5,2,1,1,r,c"/>
+																<property name="text" value="#DialogExport.slicesH"/>
+															</bean>
+															<bean class="net.sf.doolin.gui.field.FieldInt">
+																<property name="constraint" value="7,2,1,1,l,c"/>
+																<property name="name" value="DialogExport.slicesH"/>
+																<property name="property" value="slicesH"/>
+																<property name="min" value="1"/>
+																<property name="max" value="100"/>
+																<property name="eventBinders">
+																	<list>
+																		<bean class="net.sf.doolin.gui.field.event.EditEventBinder">
+																			<property name="eventAction">
+																				<bean class="net.sf.doolin.gui.field.event.MessageEventAction">
+																					<property name="messageType" value="orbe.gui.message.OrbeExportDialogSlicesUpdated"/>
+																				</bean>
+																			</property>
+																		</bean>
+																	</list>
+																</property>
+															</bean>
+															<!-- V -->
+															<bean class="net.sf.doolin.gui.field.FieldStatic">
+																<property name="constraint" value="2,5,1,1,c,c"/>
+																<property name="text" value="#DialogExport.slicesV"/>
+															</bean>
+															<bean class="net.sf.doolin.gui.field.FieldInt">
+																<property name="constraint" value="2,7,1,1,c,c"/>
+																<property name="name" value="DialogExport.slicesV"/>
+																<property name="property" value="slicesV"/>
+																<property name="min" value="1"/>
+																<property name="max" value="100"/>
+																<property name="eventBinders">
+																	<list>
+																		<bean class="net.sf.doolin.gui.field.event.EditEventBinder">
+																			<property name="eventAction">
+																				<bean class="net.sf.doolin.gui.field.event.MessageEventAction">
+																					<property name="messageType" value="orbe.gui.message.OrbeExportDialogSlicesUpdated"/>
+																				</bean>
+																			</property>
+																		</bean>
+																	</list>
+																</property>
+															</bean>
+															<!-- Slices -->
+															<bean class="orbe.gui.export.FieldSlices">
+																<property name="constraint" value="4,4,5,5,f,f"/>
+																<property name="property" value="this"/>
+																<property name="subscribers">
+																	<list>
+																		<bean class="net.sf.doolin.gui.bus.support.FieldGUISubscriber">
+																			<property name="messageType" value="orbe.gui.message.OrbeExportDialogSlicesUpdated"/>
+																		</bean>
+																	</list>
+																</property>
+															</bean>
+															<!-- Margin -->
+															<bean class="net.sf.doolin.gui.field.FieldStatic">
+																<property name="constraint" value="2,10"/>
+																<property name="text" value="#DialogExport.margin"/>
+															</bean>
+															<bean class="net.sf.doolin.gui.field.FieldInt">
+																<property name="constraint" value="4,10,5,1,l,c"/>
+																<property name="name" value="DialogExport.margin"/>
+																<property name="property" value="margin"/>
+																<property name="min" value="0"/>
+																<property name="max" value="50"/>
+															</bean>
+														</list>
+													</property>
+												</bean>
+											</property>
+										</bean>
+									</property>
+								</bean>
+							</list>
+						</property>
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+</beans>
+
+<!--
+			<prow>
+				<pcell colspan="2" hfill="true" vfill="true" weightx="1" weighty="1">
+					<psection border="true">
+						<pgrid>
+							<prow>
+								<pcell hfill="true" colspan="2">
+									<psection>
+										<pflow halign="center">
+											<static text="#DialogExport.slicesH"/>
+											<int id="SlicesH" property="slicesH" min="1" max="100">
+												<event for="edit" key="onChangeSlicesH"/>
+											</int>
+										</pflow>
+									</psection>
+								</pcell>
+							</prow>
+							<prow>
+								<pcell vfill="true">
+									<psection>
+										<pflow halign="center">
+											<static text="#DialogExport.slicesV"/>
+											<int id="SlicesV" property="slicesV" min="1" max="100">
+												<event for="edit" key="onChangeSlicesV"/>
+											</int>
+										</pflow>
+									</psection>
+								</pcell>
+								<pcell hfill="true" vfill="true" weightx="1" weighty="1">
+									<field
+										id="FormFieldSlices"
+										property="this"
+										type="orbe.gui.export.FormFieldSlices"
+										readOnly="true"/>
+								</pcell>
+							</prow>
+							<prow>
+								<pcell hfill="true" colspan="2">
+									<psection>
+										<pflow>
+											<static text="#DialogExport.margin"/>
+											<int property="margin" min="0" max="50">
+												<constraint type="required"/>
+											</int>
+										</pflow>
+									</psection>
+								</pcell>
+							</prow>
+						</pgrid>
+					</psection>
+				</pcell>
+			</prow>
+		</pgrid>
+	</page>
+	<event-listener type="orbe.gui.export.FormExportListener">
+		<event-register for="onChangeSlicesH" method="onChangeSlicesH"/>
+		<event-register for="onChangeSlicesV" method="onChangeSlicesV"/>
+	</event-listener>
+</view>
+-->

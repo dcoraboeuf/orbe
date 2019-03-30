@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OrbeMap>
+<version>2.0</version>
+<width>20</width>
+<height>20</height>
+<settings>
+<Settings>
+<scale>
+<Scale>
+<unit>PIXEL</unit>
+<value>20</value>
+</Scale>
+</scale>
+<background>FFFFFF</background>
+<grid>
+<Grid>
+<transparent>true</transparent>
+<color>808080</color>
+</Grid>
+</grid>
+<terrains>
+<Terrains>
+<terrains>
+<Terrain>
+<id>1</id>
+<name>Etendue deau</name>
+<color>3399FF</color>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>2</id>
+<name>Plaine</name>
+<color>99CC00</color>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>3</id>
+<name>Collines</name>
+<color>CC9900</color>
+<symbol id="15"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>4</id>
+<name>Montagnes</name>
+<color>555555</color>
+<symbol id="13"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>5</id>
+<name>Haute montagne</name>
+<color>FFFFFF</color>
+<symbol id="13"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>6</id>
+<name>Prairie</name>
+<color>99CC00</color>
+<symbol id="22"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>7</id>
+<name>Prairie valonnée</name>
+<color>99CC00</color>
+<symbol id="15"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>8</id>
+<name>Savane</name>
+<color>CCCC00</color>
+<symbol id="22"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>9</id>
+<name>Forêt clairsemée</name>
+<color>00BA00</color>
+<symbol id="18"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>10</id>
+<name>Forêt sèche</name>
+<color>99CC00</color>
+<symbol id="19"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>11</id>
+<name>Forêt dense</name>
+<color>00AA00</color>
+<symbol id="19"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>12</id>
+<name>Forêt vallonnée</name>
+<color>00AA00</color>
+<symbol id="21"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>13</id>
+<name>Vallons boisés</name>
+<color>99CC00</color>
+<symbol id="21"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>14</id>
+<name>Collines boisées</name>
+<color>00AA00</color>
+<symbol id="15"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>15</id>
+<name>Forêt de sapins</name>
+<color>008800</color>
+<symbol id="37"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>16</id>
+<name>Montagne boisée</name>
+<color>008800</color>
+<symbol id="13"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>17</id>
+<name>Jungle</name>
+<color>008800</color>
+<symbol id="20"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>18</id>
+<name>Jungle vallonée</name>
+<color>008800</color>
+<symbol id="15"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>19</id>
+<name>Marais</name>
+<color>339966</color>
+<symbol id="23"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>20</id>
+<name>Marécage</name>
+<color>999933</color>
+<symbol id="24"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>21</id>
+<name>Toundra</name>
+<color>999900</color>
+<symbol id="25"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>22</id>
+<name>Brouissailles</name>
+<color>999900</color>
+<symbol id="22"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>23</id>
+<name>Friches</name>
+<color>999900</color>
+<symbol id="18"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>24</id>
+<name>Landes</name>
+<color>999900</color>
+<symbol id="15"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>25</id>
+<name>Désert</name>
+<color>FFCC33</color>
+<symbol id="25"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>26</id>
+<name>Palmeraies</name>
+<color>FFCC33</color>
+<symbol id="20"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>27</id>
+<name>Bad lands</name>
+<color>FFCC33</color>
+<symbol id="16"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>28</id>
+<name>Désert de sel</name>
+<color>FFFF99</color>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>29</id>
+<name>Lac de lave</name>
+<color>880000</color>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>30</id>
+<name>Lac de feu</name>
+<color>EE0000</color>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>31</id>
+<name>Récifs</name>
+<color>3399FF</color>
+<symbol id="25"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>32</id>
+<name>Côte déchiquetée</name>
+<color>339999</color>
+<symbol id="16"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>33</id>
+<name>Glacier</name>
+<color>DDDDDD</color>
+<symbol id="14"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>34</id>
+<name>Glacier accidenté</name>
+<color>DDDDDD</color>
+<symbol id="16"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>35</id>
+<name>Montagnes glacées</name>
+<color>DDDDDD</color>
+<symbol id="13"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>36</id>
+<name>Prairie gelée</name>
+<color>DDDDDD</color>
+<symbol id="22"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>37</id>
+<name>Banquise</name>
+<color>99CCCC</color>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>38</id>
+<name>Banquise permanente</name>
+<color>DDDDDD</color>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>39</id>
+<name>Ville</name>
+<color>999999</color>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>40</id>
+<name>Landes boisées</name>
+<color>999900</color>
+<symbol id="21"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>41</id>
+<name>Hautes collines</name>
+<color>663300</color>
+<symbol id="13"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>42</id>
+<name>Forêt accidentée</name>
+<color>00BB00</color>
+<symbol id="16"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>43</id>
+<name>Marais boisés</name>
+<color>669966</color>
+<symbol id="18"/>
+</Terrain>
+</terrains>
+<terrains>
+<Terrain>
+<id>44</id>
+<name>Forêt inondée</name>
+<color>00AA00</color>
+<symbol id="23"/>
+</Terrain>
+</terrains>
+</Terrains>
+</terrains>
+<textStyles>
+<TextStyles>
+<styles>
+<TextStyle>
+<id>1</id>
+<name>Défaut</name>
+<fontName>SansSerif</fontName>
+<fontSize>100</fontSize>
+<fontBold>false</fontBold>
+<fontItalic>false</fontItalic>
+<fontColor>000000</fontColor>
+<shadow>false</shadow>
+<shadowColor>FFFFFF</shadowColor>
+</TextStyle>
+</styles>
+</TextStyles>
+</textStyles>
+<styleLineList>
+<StyleLineList>
+<styles>
+<StyleLine>
+<id>2</id>
+<name>Blue</name>
+<thickness>15</thickness>
+<color>0000CC</color>
+<transparent>false</transparent>
+<type>OTHER</type>
+<dot>NONE</dot>
+<grad>NONE</grad>
+</StyleLine>
+</styles>
+<styles>
+<StyleLine>
+<id>3</id>
+<name>Green</name>
+<thickness>15</thickness>
+<color>66CC00</color>
+<transparent>false</transparent>
+<type>OTHER</type>
+<dot>NONE</dot>
+<grad>NONE</grad>
+</StyleLine>
+</styles>
+<styles>
+<StyleLine>
+<id>1</id>
+<name>Red</name>
+<thickness>15</thickness>
+<color>FF0033</color>
+<transparent>false</transparent>
+<type>OTHER</type>
+<dot>NONE</dot>
+<grad>NONE</grad>
+</StyleLine>
+</styles>
+</StyleLineList>
+</styleLineList>
+<encodedVisibleLayers>BACKGROUND;HEX_COLOR;HEX_SYMBOL;GRID;LINE;TEXT</encodedVisibleLayers>
+</Settings>
+</settings>
+<textList>
+<TextList/>
+</textList>
+<lineList>
+<LineList>
+<elements>
+<HexLine>
+<style id="1"/>
+<points>3,3</points>
+<points>14,6</points>
+<points>7,17</points>
+<gradInverse>false</gradInverse>
+</HexLine>
+</elements>
+<elements>
+<HexLine>
+<style id="3"/>
+<points>3,8</points>
+<points>10,2</points>
+<points>12,15</points>
+<gradInverse>false</gradInverse>
+</HexLine>
+</elements>
+<elements>
+<HexLine>
+<style id="2"/>
+<points>2,5</points>
+<points>16,9</points>
+<gradInverse>false</gradInverse>
+</HexLine>
+</elements>
+</LineList>
+</lineList>
+<hexMap>400,1,0</hexMap>
+</OrbeMap>

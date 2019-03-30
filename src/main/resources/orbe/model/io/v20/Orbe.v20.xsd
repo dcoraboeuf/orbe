@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Damien Coraboeuf (BRGM) -->
+<xsd:schema targetNamespace="http://doolin-guif.sourceforge.net/schema/orbe/v20" xmlns:orbe="http://doolin-guif.sourceforge.net/schema/orbe/v20" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation>$Id$</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="orbe">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="version" type="xsd:string"/>
+				<xsd:element name="width" type="xsd:positiveInteger"/>
+				<xsd:element name="height" type="xsd:positiveInteger"/>
+				<xsd:element name="settings">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="scale">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="unit">
+											<xsd:simpleType>
+												<xsd:restriction base="xsd:string">
+													<xsd:enumeration value="PIXEL"/>
+													<xsd:enumeration value="CM"/>
+												</xsd:restriction>
+											</xsd:simpleType>
+										</xsd:element>
+										<xsd:element name="value" type="xsd:decimal"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="background" type="orbe:ColorType"/>
+							<xsd:element name="grid">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="transparent" type="xsd:boolean"/>
+										<xsd:element name="color" type="orbe:ColorType"/>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="terrains">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="terrain" minOccurs="0" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="id" type="xsd:positiveInteger"/>
+													<xsd:element name="name" type="xsd:string"/>
+													<xsd:element name="color" type="orbe:ColorType"/>
+													<xsd:element name="symbol" minOccurs="0">
+														<xsd:complexType>
+															<xsd:attribute name="id" type="xsd:positiveInteger" use="required"/>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="textStyles">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="textStyle" minOccurs="0" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="id" type="xsd:positiveInteger"/>
+													<xsd:element name="name" type="xsd:string"/>
+													<xsd:element name="fontName" type="xsd:string"/>
+													<xsd:element name="fontSize" type="xsd:positiveInteger"/>
+													<xsd:element name="fontBold" type="xsd:boolean"/>
+													<xsd:element name="fondItalic" type="xsd:boolean"/>
+													<xsd:element name="fontColor" type="orbe:ColorType"/>
+													<xsd:element name="shadow" type="xsd:boolean"/>
+													<xsd:element name="shadowColor" type="orbe:ColorType"/>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="lineStyles">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="lineStyle" minOccurs="0" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="id" type="xsd:positiveInteger"/>
+													<xsd:element name="name" type="xsd:string"/>
+													<xsd:element name="thickness" type="xsd:positiveInteger"/>
+													<xsd:element name="color" type="orbe:ColorType"/>
+													<xsd:element name="transparent" type="xsd:boolean"/>
+													<xsd:element name="type">
+														<xsd:simpleType>
+															<xsd:restriction base="xsd:string">
+																<xsd:enumeration value="RIVER"/>
+																<xsd:enumeration value="ROAD"/>
+																<xsd:enumeration value="OTHER"/>
+															</xsd:restriction>
+														</xsd:simpleType>
+													</xsd:element>
+													<xsd:element name="dot">
+														<xsd:simpleType>
+															<xsd:restriction base="xsd:string">
+																<xsd:enumeration value="NONE"/>
+																<xsd:enumeration value="SHORT"/>
+																<xsd:enumeration value="MEDIUM"/>
+																<xsd:enumeration value="LONG"/>
+																<xsd:enumeration value="SQUARE"/>
+																<xsd:enumeration value=""/>
+															</xsd:restriction>
+														</xsd:simpleType>
+													</xsd:element>
+													<xsd:element name="grad">
+														<xsd:simpleType>
+															<xsd:restriction base="xsd:string">
+																<xsd:enumeration value="NONE"/>
+																<xsd:enumeration value="ONE"/>
+																<xsd:enumeration value="BOTH"/>
+															</xsd:restriction>
+														</xsd:simpleType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="encodedVisibleLayers" type="xsd:string"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="textList">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="text" minOccurs="0" maxOccurs="unbounded">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="value" type="xsd:string"/>
+										<xsd:element name="position" type="xsd:string"/>
+										<xsd:element name="rotation" type="xsd:int"/>
+										<xsd:element name="style">
+											<xsd:complexType>
+												<xsd:attribute name="id" type="xsd:positiveInteger" use="required"/>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="lineList">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="orbe:_line" minOccurs="0" maxOccurs="unbounded"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="hexMap" type="xsd:string"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:simpleType name="ColorType">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="6"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="_line" type="orbe:_lineType" abstract="true"/>
+	<xsd:element name="edgeLine" type="orbe:_lineType" substitutionGroup="orbe:_line"/>
+	<xsd:element name="hexLine" type="orbe:_lineType" substitutionGroup="orbe:_line"/>
+	<xsd:element name="polyLine" type="orbe:_lineType" substitutionGroup="orbe:_line"/>
+	<xsd:complexType name="_lineType">
+		<xsd:sequence>
+			<xsd:element name="style">
+				<xsd:complexType>
+					<xsd:attribute name="id" type="xsd:positiveInteger" use="required"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="point" type="xsd:string" maxOccurs="unbounded"/>
+			<xsd:element name="gradInverse" type="xsd:boolean"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

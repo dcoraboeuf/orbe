@@ -1,0 +1,8 @@
+# Create an EXE and the ZIP
+mvn package
+
+# Creating a release
+http://jlorenzen.blogspot.com/2007/09/how-to-create-release-using-maven2.html
+mvn release:prepare -DdryRun=true
+mvn clean release:clean release:prepare -DpreparationGoals="clean install"
+mvn release:perform -P Deploy

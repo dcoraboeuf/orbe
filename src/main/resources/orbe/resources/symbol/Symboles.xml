@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: Symboles.xml,v 1.1 2006/10/09 10:21:36 guinnessman Exp $ -->
+<symboles>
+	<symbole id="1">
+		<image>palais.gif</image>
+		<nom>Palais</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="2">
+		<image>forteresse.gif</image>
+		<nom>Forteresse</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="3">
+		<image>fort.gif</image>
+		<nom>Fort</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="4">
+		<image>tour.gif</image>
+		<nom>Tour</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="5">
+		<image>ruines.gif</image>
+		<nom>Ruines</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="6">
+		<image>capitale.gif</image>
+		<nom>Capitale</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="7">
+		
+		<image>cite.gif</image>
+		<nom>Cité</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="8">
+		<image>ville.gif</image>
+		<nom>Ville</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="9">
+		<image>village.gif</image>
+		<nom>Village</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="10">
+		<image>sommet.gif</image>
+		<nom>Sommet</nom>
+		<symbole-type>
+			
+			<road>1</road>
+			<river>1</river>
+			<limit>1</limit>
+			<other>1</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="12">
+		<image>volcan.gif</image>
+		<nom>Volcan</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="13">
+		<image>montagne.gif</image>
+		<nom>Montagne</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="14">
+		<image>accidente.gif</image>
+		<nom>Accidenté</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="15">
+		<image>collines.gif</image>
+		<nom>Collines</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="32">
+		<image>dunes.gif</image>
+		<nom>Dunes</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="16">
+		<image>bad-lands.gif</image>
+		<nom>Bad lands</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="17">
+		<image>oasis.gif</image>
+		<nom>Oasis</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="18">
+		<image>foret.gif</image>
+		<nom>Forêt</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="19">
+		<image>foret-dense.gif</image>
+		<nom>Forêt dense</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="20">
+		<image>jungle.gif</image>
+		<nom>Jungle</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="21">
+		<image>vallons.gif</image>
+		<nom>Vallons</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="22">
+		<image>prairie.gif</image>
+		<nom>Prairie</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="23">
+		<image>marais.gif</image>
+		<nom>Marais</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="24">
+		<image>marecage.gif</image>
+		<nom>Marécage</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="25">
+		<image>rocaille.gif</image>
+		<nom>Rocaille</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="29">
+		<image>bataille.gif</image>
+		<nom>Bataille</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="31">
+		<image>port.gif</image>
+		<nom>Port</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="37">
+		<image>sapins.gif</image>
+		<nom>Sapins</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="39">
+		<image>grande-ile.gif</image>
+		<nom>Grande île</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+	<symbole id="30">
+		<image>grotte.gif</image>
+		<nom>Grotte</nom>
+		<symbole-type>
+			<road>0</road>
+			<river>0</river>
+			<limit>0</limit>
+			<other>0</other>
+		</symbole-type>
+	</symbole>
+</symboles>

@@ -1,0 +1,28 @@
+<shortcuts>
+	<skipIfNotSupported />
+	<programGroup
+		defaultName="${project.name}"
+		location="applications" />
+	<shortcut
+		name="Start ${project.name}"
+		target="$INSTALL_PATH\${project.name}-${project.version}.exe"
+		commandLine=""
+		workingDirectory="$INSTALL_PATH"
+		description="${project.description}"
+		iconFile="$INSTALL_PATH\${project.name}.ico"
+		initialState="normal"
+		programGroup="yes">
+		<createForPack name="Core" />
+	</shortcut>
+	<shortcut
+		name="Uninstall ${project.name}"
+		target="$INSTALL_PATH\${project.name}-${project.version}-uninstall.exe"
+		commandLine=""
+		workingDirectory="$INSTALL_PATH"
+		description="${project.description}"
+		iconFile="$INSTALL_PATH\${project.name}.ico"
+		initialState="normal"
+		programGroup="yes">
+		<createForPack name="Core" />
+	</shortcut>
+</shortcuts>

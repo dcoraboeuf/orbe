@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- XML Orbe output for version 2.0 -->
+<orbe xmlns="http://doolin-guif.sourceforge.net/schema/orbe/v20">
+	<version>2.0</version>
+	<width>$orbe.width</width>
+	<height>$orbe.height</height>
+	<settings>
+		<scale>
+			<unit>$orbe.settings.scale.unit</unit>
+			<value>$orbe.settings.scale.value</value>
+		</scale>
+		<background>$orbeIOFormat.formatColor($orbe.settings.background)</background>
+		<grid>
+			<transparent>$orbe.settings.grid.transparent</transparent>
+			<color>$orbeIOFormat.formatColor($orbe.settings.grid.color)</color>
+		</grid>
+		<terrains>
+			#foreach ($terrain in $orbe.settings.terrains.terrains)
+			<terrain>
+				<id>$terrain.id</id>
+				<name>$terrain.name</name>
+				<color>$orbeIOFormat.formatColor($terrain.color)</color>
+				#if ($terrain.symbol)
+				<symbol id="$terrain.symbol.id"/>
+				#end
+			</terrain>
+			#end
+		</terrains>
+		<textStyles>
+			#foreach ($style in $orbe.settings.textStyles.styles)
+			<textStyle>
+				<id>$style.id</id>
+				<name>$style.name</name>
+				<fontName>$style.fontName</fontName>
+				<fontSize>$style.fontSize</fontSize>
+				<fontBold>$style.fontBold</fontBold>
+				<fontItalic>$style.fontItalic</fontItalic>
+				<fontColor>$orbeIOFormat.formatColor($style.fontColor)</fontColor>
+				<shadow>$style.shadow</shadow>
+				<shadowColor>$orbeIOFormat.formatColor($style.shadowColor)</shadowColor>
+			</textStyle>
+			#end
+		</textStyles>
+		<lineStyles>
+			#foreach ($style in $orbe.settings.styleLineList.styles)
+			<lineStyle>
+				<id>$style.id</id>
+				<name>$style.name</name>
+				<thickness>$style.thickness</thickness>
+				<color>$orbeIOFormat.formatColor($style.color)</color>
+				<transparent>$style.transparent</transparent>
+				<type>$style.type</type>
+				<dot>$style.dot</dot>
+				<grad>$style.grad</grad>
+			</lineStyle>
+			#end
+		</lineStyles>
+		<encodedVisibleLayers>$orbe.settings.encodedVisibleLayers</encodedVisibleLayers>
+	</settings>
+	<textList>
+		#foreach ($text in $orbe.textList.elements)
+		<text>
+			<value>$text.value</value>
+			<position>$orbeIOFormat.formatHXPoint2D($text.position)</position>
+			<rotation>$text.rotation</rotation>
+			<style id="$text.style.id"/>
+		</text>
+		#end
+	</textList>
+	<lineList>
+		#foreach ($line in $orbe.lineList.elements)
+			#if ($line.getForm().toString() == "POLY")
+			<polyLine>
+				<style id="$line.style.id"/>
+				#foreach ($point in $line.points)
+					<point>$orbeIOFormat.formatHXPoint2D($point)</point>
+				#end
+				<gradInverse>$line.gradInverse</gradInverse>
+			</polyLine>
+			#end
+			#if ($line.getForm().toString() == "HEX")
+			<hexLine>
+				<style id="$line.style.id"/>
+				#foreach ($point in $line.points)
+					<point>$orbeIOFormat.formatHXPoint($point)</point>
+				#end
+				<gradInverse>$line.gradInverse</gradInverse>
+			</hexLine>
+			#end
+			#if ($line.getForm().toString() == "EDGE")
+			<edgeLine>
+				<style id="$line.style.id"/>
+				#foreach ($point in $line.points)
+					<point>$orbeIOFormat.formatHXCorner($point)</point>
+				#end
+				<gradInverse>$line.gradInverse</gradInverse>
+			</edgeLine>
+			#end
+		#end
+	</lineList>
+	<hexMap>$orbeIOFormat.formatMap($orbe.hexMap)</hexMap>
+</orbe>

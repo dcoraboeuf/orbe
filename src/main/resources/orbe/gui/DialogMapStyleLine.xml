@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id$ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+	   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+	
+	
+	<bean
+		id="DialogMapStyleLine"
+		class="net.sf.doolin.gui.form.FormView">
+		<property name="title" value="#DialogMapStyleLine.title"/>
+		<property name="iconId" value="IconLine"/>
+		<property name="size">
+			<bean class="net.sf.doolin.gui.core.view.DefaultSize">
+				<property name="width" value="600"/>
+				<property name="height" value="400"/>
+			</bean>
+		</property>
+		<property name="form">
+			<bean class="net.sf.doolin.gui.form.support.DefaultForm">
+				<property name="layout">
+					<bean class="net.sf.doolin.gui.form.layout.SingleLayout">
+						<property name="field">
+							<bean class="orbe.gui.map.FieldRepositoryStyleLine">
+								<property name="property" value="repository"/>
+								<property name="formDetail">
+									<bean class="net.sf.doolin.gui.form.support.DefaultForm">
+										<property name="layout">
+											<bean class="net.sf.doolin.gui.form.layout.FormBasedLayout">
+												<property name="columnSpecs" value="3dlu,pref,3dlu,pref:grow,3dlu"/>
+												<property name="rowSpecs" value="3dlu,pref,3dlu,pref,3dlu,pref,3dlu,pref,3dlu,pref,3dlu,pref,3dlu,pref,3dlu,pref,3dlu"/>
+												<property name="fieldList">
+													<list>
+														<!-- Id -->
+														<bean class="net.sf.doolin.gui.field.FieldStatic">
+															<property name="constraint" value="2,2,3,1"/>
+															<property name="property" value="id"/>
+															<property name="text" value="#StyleLine.ID $fieldData"/>
+														</bean>
+														<!-- Name -->
+														<bean class="net.sf.doolin.gui.field.FieldStatic">
+															<property name="constraint" value="2,4"/>
+															<property name="text" value="#StyleLine.Name"/>
+														</bean>
+														<bean class="net.sf.doolin.gui.field.FieldText">
+															<property name="constraint" value="4,4"/>
+															<property name="name" value="StyleLine.Name"/>
+															<property name="property" value="name"/>
+															<property name="columns" value="20"/>
+															<property name="maxlength" value="20"/>
+															<property name="validators">
+																<list>
+																	<bean class="net.sf.doolin.gui.field.validator.MandatoryValidator"/>
+																</list>
+															</property>
+														</bean>
+														<!-- Line type -->
+														<bean class="net.sf.doolin.gui.field.FieldStatic">
+															<property name="constraint" value="2,6"/>
+															<property name="text" value="#StyleLine.Type"/>
+														</bean>
+														<bean class="net.sf.doolin.gui.field.FieldCombo">
+															<property name="constraint" value="4,6"/>
+															<property name="name" value="StyleLine.Type"/>
+															<property name="property" value="type"/>
+															<property name="itemProvider">
+																<bean class="net.sf.doolin.gui.field.helper.EnumItemProvider">
+																	<property name="enumType" value="orbe.model.style.LineType"/>
+																</bean>
+															</property>
+															<property name="cellRenderer">
+																<bean class="orbe.gui.map.CellRendererLineType"/>
+															</property>
+														</bean>
+														<!-- Thickness -->
+														<bean class="net.sf.doolin.gui.field.FieldStatic">
+															<property name="constraint" value="2,8"/>
+															<property name="text" value="#StyleLine.Thickness"/>
+														</bean>
+														<bean class="net.sf.doolin.gui.field.FieldInt">
+															<property name="constraint" value="4,8"/>
+															<property name="name" value="StyleLine.Thickness"/>
+															<property name="property" value="thickness"/>
+															<property name="min" value="1"/>
+															<property name="max" value="99"/>
+														</bean>
+														<!-- Color -->
+														<bean class="net.sf.doolin.gui.field.FieldStatic">
+															<property name="constraint" value="2,10"/>
+															<property name="text" value="#StyleLine.Color"/>
+														</bean>
+														<bean class="net.sf.doolin.gui.field.FieldColor">
+															<property name="constraint" value="4,10"/>
+															<property name="name" value="StyleLine.Color"/>
+															<property name="property" value="color"/>
+														</bean>
+														<!-- Transparent -->
+														<bean class="net.sf.doolin.gui.field.FieldCheck">
+															<property name="constraint" value="4,12"/>
+															<property name="name" value="StyleLine.Transparent"/>
+															<property name="property" value="transparent"/>
+														</bean>
+														<!-- Line dot -->
+														<bean class="net.sf.doolin.gui.field.FieldStatic">
+															<property name="constraint" value="2,14"/>
+															<property name="text" value="#StyleLine.Dot"/>
+														</bean>
+														<bean class="net.sf.doolin.gui.field.FieldCombo">
+															<property name="constraint" value="4,14"/>
+															<property name="name" value="StyleLine.Dot"/>
+															<property name="property" value="dot"/>
+															<property name="itemProvider">
+																<bean class="net.sf.doolin.gui.field.helper.EnumItemProvider">
+																	<property name="enumType" value="orbe.model.style.LineDotType"/>
+																</bean>
+															</property>
+															<property name="cellRenderer">
+																<bean class="orbe.gui.map.CellRendererLineDot"/>
+															</property>
+														</bean>
+														<!-- Line grad -->
+														<bean class="net.sf.doolin.gui.field.FieldStatic">
+															<property name="constraint" value="2,16"/>
+															<property name="text" value="#StyleLine.Grad"/>
+														</bean>
+														<bean class="net.sf.doolin.gui.field.FieldCombo">
+															<property name="constraint" value="4,16"/>
+															<property name="name" value="StyleLine.Grad"/>
+															<property name="property" value="grad"/>
+															<property name="itemProvider">
+																<bean class="net.sf.doolin.gui.field.helper.EnumItemProvider">
+																	<property name="enumType" value="orbe.model.style.LineGradType"/>
+																</bean>
+															</property>
+															<property name="cellRenderer">
+																<bean class="orbe.gui.map.CellRendererLineGrad"/>
+															</property>
+														</bean>
+													</list>
+												</property>
+											</bean>
+										</property>
+									</bean>
+								</property>
+							</bean>
+						</property>
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+</beans>
