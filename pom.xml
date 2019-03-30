@@ -117,47 +117,6 @@
 							<goal>copy-dependencies</goal>
 						</goals>
 					</execution>
-					<!-- Extracts the launch4j ZIP -->
-					<execution>
-						<id>extract-launch4j</id>
-						<phase>package</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>net.sf.launch4j</groupId>
-									<artifactId>Launch4j</artifactId>
-									<version>3.0.0-pre2</version>
-									<type>zip</type>
-								</artifactItem>
-							</artifactItems>
-							<outputDirectory>
-								${project.build.directory}/launch4j
-							</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<!-- Generates a ZIP including the JAR and the dependencies -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<descriptors>
-						<descriptor>
-							src/assembly/assembly-zip.xml
-						</descriptor>
-					</descriptors>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>attached</goal>
-						</goals>
-					</execution>
 				</executions>
 			</plugin>
 		</plugins>
