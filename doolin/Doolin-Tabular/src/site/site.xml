@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Doolin-Tabular">
+	
+	<bannerLeft>
+		<name>Doolin Tabular</name>
+		<href>http://doolin-guif.sourceforge.net/Doolin-Tabular</href>
+	</bannerLeft>
+	
+	<body>
+		
+		<menu ref="parent"/>
+		
+		<menu ref="reports"/>
+		
+	</body>
+</project>

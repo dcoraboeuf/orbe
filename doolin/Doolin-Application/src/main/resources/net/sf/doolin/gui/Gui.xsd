@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://doolin-guif.sourceforge.net/schema/gui" xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gui="http://doolin-guif.sourceforge.net/schema/gui" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="http://www.springframework.org/schema/beans" schemaLocation="http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"/>
+	<!-- Manager -->
+	<xsd:element name="manager">
+		<xsd:annotation>
+			<xsd:documentation>net.sf.doolin.gui.core.support.DefaultApplicationManager</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="gui:startup"/>
+				<xsd:element ref="beans:property" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="gui:plugins" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="startup">
+		<xsd:annotation>
+			<xsd:documentation>net.sf.doolin.gui.core.support.FrameStartup</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence/>
+			<xsd:attribute name="frame" use="required" type="xsd:string"/>
+			<xsd:attribute name="frameDataFactory" use="optional" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- Plugins -->
+	<xsd:element name="plugins">
+		<xsd:annotation>
+			<xsd:documentation>List&lt;net.sf.doolin.gui.core.Plugin&gt;</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="beans:bean"/>
+				<xsd:element ref="gui:_plugin"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="_plugin" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>net.sf.doolin.gui.core.Plugin</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<!-- Fields -->
+	<xsd:element name="static">
+		<xsd:annotation>
+			<xsd:documentation>net.sf.doolin.gui.form.field.FieldStatic</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+					<xsd:attribute name="text" type="xsd:string" use="required"/>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="text">
+		<xsd:annotation>
+			<xsd:documentation>net.sf.doolin.gui.form.field.FieldText</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+					<xsd:sequence>
+						<xsd:element ref="gui:validators" minOccurs="0"/>
+					</xsd:sequence>
+					<xsd:attribute name="name" type="xsd:string" use="optional"/>
+					<xsd:attribute name="property" type="xsd:string" use="required"/>
+					<xsd:attribute name="columns" type="xsd:positiveInteger" use="optional"/>
+					<xsd:attribute name="maxlength" type="xsd:int" use="optional"/>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="button">
+		<xsd:annotation>
+			<xsd:documentation>net.sf.doolin.gui.form.field.FieldButton</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+					<xsd:sequence>
+						<xsd:element ref="gui:action"/>
+					</xsd:sequence>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="combo">
+		<xsd:annotation>
+			<xsd:documentation>net.sf.doolin.gui.form.field.FieldCombo</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+					<xsd:sequence>
+						<xsd:element ref="gui:itemProvider"/>
+						<xsd:element ref="gui:labelProvider" minOccurs="0"/>
+					</xsd:sequence>
+					<xsd:attribute name="name" type="xsd:string" use="optional"/>
+					<xsd:attribute name="property" type="xsd:string" use="required"/>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- Field validators -->
+	<xsd:element name="validators">
+		<xsd:annotation>
+			<xsd:documentation>List&lt;net.sf.doolin.gui.form.field.Validator&gt;</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="beans:bean"/>
+				<xsd:element ref="gui:_validator"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="_validator" abstract="true">
+		<xsd:annotation>
+			<xsd:documentation>net.sf.doolin.gui.form.field.Validator</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="mandatory" substitutionGroup="gui:_validator">
+		<xsd:annotation>
+			<xsd:documentation>net.sf.doolin.gui.form.field.validator.MandatoryValidator</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<!-- View size -->
+	<xsd:element name="size">
+		<xsd:annotation>
+			<xsd:documentation>net.sf.doolin.gui.core.view.DefaultSize</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence/>
+			<xsd:attribute name="width" type="xsd:positiveInteger" use="optional"/>
+			<xsd:attribute name="height" type="xsd:positiveInteger" use="optional"/>
+			<xsd:attribute name="maximized" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="saveInPrefs" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="pack" type="xsd:boolean" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- Menu bar -->
+	<xsd:element name="menubar">
+		<xsd:annotation>
+			<xsd:documentation>net.sf.doolin.gui.core.view.Menubar</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="gui:menu" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="menu">
+		<xsd:annotation>
+			<xsd:documentation>net.sf.doolin.gui.core.view.Menu</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="gui:menu"/>
+				<xsd:element ref="gui:menuSep"/>
+				<xsd:element ref="gui:menuAction"/>
+			</xsd:choice>
+			<xsd:attribute name="name" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="menuSep">
+		<xsd:annotation>
+			<xsd:documentation>net.sf.doolin.gui.core.view.MenuSep</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="menuAction">
+		<xsd:annotation>
+			<xsd:documentation>net.sf.doolin.gui.core.view.MenuAction</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element ref="beans:ref"/>
+				<xsd:element ref="beans:bean"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- String bundles -->
+	<xsd:element name="strings">
+		<xsd:annotation>
+			<xsd:documentation>net.sf.doolin.gui.core.support.StringBundles</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+					<xsd:sequence>
+						<xsd:element name="path" type="xsd:string" minOccurs="0"
+							maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- Properties -->
+	<xsd:element name="action">
+		<xsd:annotation>
+			<xsd:documentation>'action' property for net.sf.doolin.gui.core.Action</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element ref="beans:ref"/>
+				<xsd:element ref="beans:bean"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="itemProvider">
+		<xsd:annotation>
+			<xsd:documentation>'itemProvider' property for net.sf.doolin.gui.form.field.helper.ItemProvider</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element ref="beans:bean"/>
+				<xsd:element ref="beans:ref"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="labelProvider">
+		<xsd:annotation>
+			<xsd:documentation>'labelProvider' property for net.sf.doolin.gui.form.field.helper.LabelProvider</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:element ref="beans:bean"/>
+				<xsd:element ref="beans:ref"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

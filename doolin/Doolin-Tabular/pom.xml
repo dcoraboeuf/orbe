@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	
+	<artifactId>Doolin-Tabular</artifactId>
+	
+	<parent>
+		<artifactId>Doolin</artifactId>
+		<groupId>net.sf.doolin</groupId>
+		<version>0.6.1</version>
+	</parent>
+	
+	<name>Doolin-Tabular</name>
+	<description>This Doolin GUI module is an extension that allows writing
+	tabular data (CSV, Excel).</description>
+	<url>http://doolin-guif.sourceforge.net/Doolin-Tabular</url>
+	
+	<scm>
+		<connection>scm:svn:https://doolin-guif.svn.sourceforge.net/svnroot/doolin-guif/tags/Doolin-0.6.1/Doolin-Tabular</connection>
+		<url>http://doolin-guif.svn.sourceforge.net/viewvc/doolin-guif/tags/Doolin-0.6.1/Doolin-Tabular</url>
+	</scm>
+	
+	<dependencies>
+		<dependency>
+			<groupId>net.sf.doolin</groupId>
+			<artifactId>Doolin-Application</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>poi</groupId>
+			<artifactId>poi-2.5.1-final</artifactId>
+			<version>20040804</version>
+		</dependency>
+	</dependencies>
+</project>

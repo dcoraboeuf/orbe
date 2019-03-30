@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Damien Coraboeuf (BRGM) -->
+<xsd:schema targetNamespace="http://doolin-guif.sourceforge.net/schema/2006/Codes" xmlns:codes="http://doolin-guif.sourceforge.net/schema/2006/Codes" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation>$Id: codes.xsd,v 1.1 2007/07/18 18:41:27 guinnessman Exp $</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="codes">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="code" minOccurs="0" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="label" minOccurs="0" maxOccurs="unbounded">
+								<xsd:complexType>
+									<xsd:simpleContent>
+										<xsd:extension base="xsd:string">
+											<xsd:attribute name="lang" type="xsd:language" use="optional">
+												<xsd:annotation>
+													<xsd:documentation>Language for the label. Nothing means that this label is the default one.</xsd:documentation>
+												</xsd:annotation>
+											</xsd:attribute>
+										</xsd:extension>
+									</xsd:simpleContent>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="code" type="xsd:ID" use="required">
+							<xsd:annotation>
+								<xsd:documentation>Mandatory code for the string</xsd:documentation>
+							</xsd:annotation>
+						</xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

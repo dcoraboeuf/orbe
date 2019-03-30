@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id: Auth.xsd,v 1.1 2007/08/17 15:06:56 guinnessman Exp $ -->
+<xsd:schema targetNamespace="http://doolin-guif.sourceforge.net/schema/Auth" xmlns:this="http://doolin-guif.sourceforge.net/schema/Auth" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:element name="auths">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="this:authgroup" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="authgroup">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="this:auth" maxOccurs="unbounded"/>
+				<xsd:element ref="this:script"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="auth">
+		<xsd:complexType>
+			<xsd:attribute name="type" type="xsd:string" use="required"/>
+			<xsd:attribute name="id" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="script" type="xsd:string"/>
+</xsd:schema>

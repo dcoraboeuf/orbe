@@ -1,0 +1,14 @@
+<!-- OXML Configuration for the tests -->
+<!-- $Id$ -->
+<oxml xmlns="http://doolin-guif.sourceforge.net/schema/oxml">
+	<for node="contactList">
+		<create class="net.sf.doolin.oxml.ContactList" root="true">
+			<for node="contact">
+				<create class="net.sf.doolin.oxml.Contact" setter="addContact">
+					<property name="name"/>
+					<property name="firstName"/>
+				</create>
+			</for>
+		</create>
+	</for>
+</oxml>

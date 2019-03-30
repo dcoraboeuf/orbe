@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Repository of data layer types -->
+<!-- $Id: Codes.xml,v 1.1 2007/07/18 18:41:25 guinnessman Exp $ -->
+<codes
+	xmlns="http://doolin-guif.sourceforge.net/schema/2006/Codes">
+	<code code="seismological">
+		<label>Seismological</label>
+		<label lang="fr">Sismologique</label>
+	</code>
+	<code code="topographical">
+		<label>Topographical</label>
+		<label lang="fr">Topographique</label>
+	</code>
+	<code code="remoteSensing">
+		<label>Remote Sensing</label>
+	</code>
+	<code code="geophysics">
+		<label>Geophysics</label>
+		<label lang="fr">Géophysique</label>
+	</code>
+	<code code="geotechnical">
+		<label>Geotechnical</label>
+		<label lang="fr">Géotechnique</label>
+	</code>
+	<code code="geological">
+		<label>Geological</label>
+		<label lang="fr">Géologique</label>
+	</code>
+	<code code="meteorological">
+		<label>Meteorological</label>
+		<label lang="fr">Météorologique</label>
+	</code>
+	<code code="hydrological">
+		<label>Hydrological</label>
+		<label lang="fr">Hydrologique</label>
+	</code>
+</codes>

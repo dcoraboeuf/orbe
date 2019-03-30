@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	
+	<artifactId>Doolin-DB</artifactId>
+	
+	<parent>
+		<artifactId>Doolin</artifactId>
+		<groupId>net.sf.doolin</groupId>
+		<version>0.6.1</version>
+	</parent>
+	
+	<name>Doolin-DB</name>
+	<description>This Doolin GUI module allows the setup and the automatic updates
+	of a database at client side.</description>
+	<url>http://doolin-guif.sourceforge.net/Doolin-DB</url>
+	
+	<scm>
+		<connection>scm:svn:https://doolin-guif.svn.sourceforge.net/svnroot/doolin-guif/tags/Doolin-0.6.1/Doolin-DB</connection>
+		<url>http://doolin-guif.svn.sourceforge.net/viewvc/doolin-guif/tags/Doolin-0.6.1/Doolin-DB</url>
+	</scm>
+	
+	<dependencies>
+		<dependency>
+			<groupId>net.sf.doolin</groupId>
+			<artifactId>Doolin-Application</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.2</version>
+		</dependency>
+	</dependencies>
+</project>

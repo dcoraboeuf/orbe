@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Damien Coraboeuf (BRGM) -->
+<xsd:schema targetNamespace="http://doolin-guif.sourceforge.net/schema/oxml" xmlns:oxml="http://doolin-guif.sourceforge.net/schema/oxml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--Elements-->
+	<xsd:element name="oxml" type="oxml:OxmlType"/>
+	<xsd:element name="_action" type="oxml:_ActionType" abstract="true"/>
+	<xsd:element name="for" type="oxml:ForType" substitutionGroup="oxml:_action"/>
+	<xsd:element name="create" type="oxml:CreateType" substitutionGroup="oxml:_action"/>
+	<xsd:element name="check" type="oxml:CheckType" substitutionGroup="oxml:_action"/>
+	<xsd:element name="param" type="oxml:ParamType"/>
+	<xsd:element name="property" type="oxml:PropertyType" substitutionGroup="oxml:_action"/>
+	<xsd:element name="if" type="oxml:IfType" substitutionGroup="oxml:_action"/>
+	<!--Complex types-->
+	<xsd:complexType name="_ActionType" abstract="true"/>
+	<xsd:complexType name="_SequenceType" abstract="true">
+		<xsd:complexContent>
+			<xsd:extension base="oxml:_ActionType">
+				<xsd:sequence>
+					<xsd:element ref="oxml:_action" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ForType">
+		<xsd:complexContent>
+			<xsd:extension base="oxml:_SequenceType">
+				<xsd:attribute name="node" type="xsd:string" use="required"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CreateType">
+		<xsd:complexContent>
+			<xsd:extension base="oxml:_SequenceType">
+				<xsd:attribute name="class" type="xsd:string" use="optional"/>
+				<xsd:attribute name="id" type="xsd:ID" use="optional"/>
+				<xsd:attribute name="root" type="xsd:boolean" use="optional" default="false"/>
+				<xsd:attribute name="property" type="xsd:string" use="optional"/>
+				<xsd:attribute name="setter" type="xsd:string" use="optional"/>
+				<xsd:attribute name="post" type="xsd:boolean" use="optional" default="false"/>
+				<xsd:attribute name="factory" type="xsd:string" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CheckType">
+		<xsd:complexContent>
+			<xsd:extension base="oxml:_ActionType">
+				<xsd:attribute name="node" type="xsd:string" use="optional"/>
+				<xsd:attribute name="value" type="xsd:string" use="required"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ParamType">
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+		<xsd:attribute name="value" type="xsd:string" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="_ParameterizedType" abstract="true">
+		<xsd:sequence>
+			<xsd:element ref="oxml:param" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="InstanceType">
+		<xsd:complexContent>
+			<xsd:extension base="oxml:_ParameterizedType">
+				<xsd:attribute name="class" type="xsd:string" use="required"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="PropertyType">
+		<xsd:complexContent>
+			<xsd:extension base="oxml:_ActionType">
+				<xsd:sequence>
+					<xsd:element name="adapter" type="oxml:InstanceType" minOccurs="0"/>
+				</xsd:sequence>
+				<xsd:attribute name="name" type="xsd:string" use="required"/>
+				<xsd:attribute name="node" type="xsd:string" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="IfType">
+		<xsd:complexContent>
+			<xsd:extension base="oxml:_SequenceType">
+				<xsd:attribute name="test" type="xsd:string" use="required"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="OxmlType">
+		<xsd:complexContent>
+			<xsd:extension base="oxml:_SequenceType"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

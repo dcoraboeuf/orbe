@@ -1,0 +1,8 @@
+<!-- $Id$ -->
+<!-- Source document for the tests -->
+<contactList xmlns="http://doolin-guif.sourceforge.net/schema/test/oxml/Contact">
+	<contact>
+		<name>Coraboeuf</name>
+		<firstName>Damien</firstName>
+	</contact>
+</contactList>
