@@ -21,6 +21,8 @@ dependencies {
     // See maven/maven.bat
     implementation("com.vividsolutions:JTS:1.7.2")
 
+    runtime("jgoodies:looks:1.2.2")
+
     testImplementation("junit:junit:3.8.1")
     testImplementation("commons-io:commons-io:1.3.1")
 }
