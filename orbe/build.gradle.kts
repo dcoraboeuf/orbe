@@ -4,7 +4,9 @@ plugins {
 }
 
 repositories {
-    mavenLocal()
+    maven {
+        url = uri("maven")
+    }
 }
 
 dependencies {
@@ -33,4 +35,8 @@ tasks.jar {
                 "Main-Class" to "orbe.gui.Main"
         )
     }
+}
+
+tasks.build {
+    dependsOn("shadowJar")
 }
