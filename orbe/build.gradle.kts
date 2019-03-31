@@ -1,5 +1,6 @@
 plugins {
-    application
+    java
+    id("com.github.johnrengelman.shadow") version "5.0.0"
 }
 
 repositories {
@@ -24,6 +25,10 @@ dependencies {
     testImplementation("commons-io:commons-io:1.3.1")
 }
 
-application {
-    mainClassName = "orbe.gui.Main"
+tasks.jar {
+    manifest {
+        attributes(
+                "Main-Class" to "orbe.gui.Main"
+        )
+    }
 }
