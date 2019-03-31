@@ -1,5 +1,5 @@
 plugins {
-    java
+    application
 }
 
 repositories {
@@ -22,4 +22,8 @@ dependencies {
 
     testImplementation("junit:junit:3.8.1")
     testImplementation("commons-io:commons-io:1.3.1")
+}
+
+application {
+    mainClassName = "orbe.gui.Main"
 }
