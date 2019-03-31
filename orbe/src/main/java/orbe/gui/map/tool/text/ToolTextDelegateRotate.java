@@ -88,7 +88,7 @@ public class ToolTextDelegateRotate extends ToolTextDelegate {
 		// Conversion dans le référentiel PX
 		PointDecimal px = getTool().getPX(p);
 		// Position du texte dans le référentiel PX
-		PointDecimal txtPX = TextRenderer.getTextPXPosition(text, map, getTool().getControler().getView().getViewSettings());
+		PointDecimal txtPX = TextRenderer.getTextPXPosition(text, map);
 		// Offset
 		double x = px.x - txtPX.x;
 		double y = px.y - txtPX.y;

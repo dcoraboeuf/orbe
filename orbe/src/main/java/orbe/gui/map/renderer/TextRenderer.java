@@ -29,15 +29,14 @@ import orbe.model.style.TextStyle;
 
 /**
  * Rendu du texte.
- * 
+ *
  * @author Damien Coraboeuf
- * @version $Id: TextRenderer.java,v 1.12 2006/12/06 10:19:19 guinnessman Exp $
  */
 public class TextRenderer {
 
 	/**
 	 * Get the zone that is concerned by any refreshing need.
-	 * 
+	 *
 	 * @param text
 	 *            Text
 	 * @param map
@@ -59,7 +58,7 @@ public class TextRenderer {
 
 	/**
 	 * Get the zone that contains strictly the text.
-	 * 
+	 *
 	 * @param text
 	 *            Text
 	 * @param map
@@ -95,7 +94,7 @@ public class TextRenderer {
 
 	/**
 	 * Boite du texte, calcul�e sans rotation
-	 * 
+	 *
 	 * @param text
 	 *            Texte de r�f�rence.
 	 * @param map
@@ -106,8 +105,8 @@ public class TextRenderer {
 	 *            Environnement graphique
 	 * @return Boite dans le référentiel PX.
 	 */
-	protected static Double getPlainPXZone(OrbeText text, OrbeMap map, ViewSettings viewSettings, Graphics2D g) {
-		PointDecimal px = getTextPXPosition(text, map, viewSettings);
+	private static Double getPlainPXZone(OrbeText text, OrbeMap map, ViewSettings viewSettings, Graphics2D g) {
+		PointDecimal px = getTextPXPosition(text, map);
 		// Font pour le texte
 		Font font = getFont(text, map, viewSettings);
 		// Font metrics pour l'environnement graphique
@@ -118,22 +117,20 @@ public class TextRenderer {
 		double y = px.y - fm.getAscent();
 		double width = fm.stringWidth(text.getValue());
 		double height = fm.getAscent() + fm.getDescent() + fm.getLeading();
-		Double zone = new Double(x, y, width, height);
-		return zone;
+		return new Double(x - width / 2.0, y, width, height);
 	}
 
-	public static PointDecimal getTextPXPosition(OrbeText text, OrbeMap map, ViewSettings viewSettings) {
+	public static PointDecimal getTextPXPosition(OrbeText text, OrbeMap map) {
 		// Position du texte en HX
 		HXPoint2D hx = text.getPosition();
 		// Conversion en PX
-		PointDecimal px = ScaleMath.scaleHXToPX(map, hx);
-		return px;
+		return ScaleMath.scaleHXToPX(map, hx);
 	}
 
 	/**
 	 * Calcul de la transformation � appliquer dans le référentiel pour les
 	 * objets relatifs au texte.
-	 * 
+	 *
 	 * @param text
 	 *            Texte de r�f�rence.
 	 * @param map
@@ -148,7 +145,7 @@ public class TextRenderer {
 			// No transformation
 			return new AffineTransform();
 		} else {
-			PointDecimal px = getTextPXPosition(text, map, viewSettings);
+			PointDecimal px = getTextPXPosition(text, map);
 			double theta = rotation * Math.PI / 180.0;
 			// Rotate around the reference
 			return AffineTransform.getRotateInstance(theta, px.x, px.y);
@@ -158,7 +155,7 @@ public class TextRenderer {
 	/**
 	 * Calcul de la transformation � appliquer � l'�cran pour les objets
 	 * relatifs au texte.
-	 * 
+	 *
 	 * @param text
 	 *            Texte de r�f�rence.
 	 * @param map
@@ -197,17 +194,19 @@ public class TextRenderer {
 	}
 
 	public static void render(OrbeText text, OrbeMap map, ViewSettings viewSettings, Graphics2D g) {
+		Double px = getPlainPXZone(text, map, viewSettings, g);
+		// Text to display
 		String value = text.getValue();
 		// Style
 		TextStyle style = text.getStyle();
-		// Position du texte
-		PointDecimal px = getTextPXPosition(text, map, viewSettings);
 		// Font pour le texte
 		Font font = getFont(text, map, viewSettings);
+		// Font metrics pour l'environnement graphique
+		FontMetrics fm = g.getFontMetrics(font);
 
 		// Dimensions en référentiel PX
 		double x = px.x;
-		double y = px.y;
+		double y = px.y + fm.getAscent();
 
 		// Dimensions en référentiel screen
 		int ix = ScaleMath.scalePXToScreen(map, viewSettings, x);
@@ -247,8 +246,8 @@ public class TextRenderer {
 			g.draw(tBox);
 			// Support du texte
 			GeneralPath path = new GeneralPath();
-			path.moveTo((float) px.x, (float) px.y);
-			path.lineTo((float) (px.x + box.width), (float) px.y);
+			path.moveTo((float) px.x, (float)(px.y + fm.getAscent()));
+			path.lineTo((float) (px.x + px.width), (float) (px.y + fm.getAscent()));
 			Shape tPath = t.createTransformedShape(path);
 			g.setColor(Color.WHITE);
 			g.draw(tPath);
@@ -257,7 +256,7 @@ public class TextRenderer {
 
 	/**
 	 * Configure la taille d'un composant pour l'�dition
-	 * 
+	 *
 	 * @param field
 	 *            Composant � configurer
 	 * @param editedText
