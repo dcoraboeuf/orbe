@@ -4,6 +4,12 @@ jdk:
   - openjdk8
 
 script:
-  - ./gradlew build
+  - ./gradlew versionDisplay versionFile build --stacktrace --console plain
 
 # TODO GitHub release for release branches
+# TODO Full clone:
+## .travis.yml
+#install:
+#  - git clone https://github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
+#  - cd $TRAVIS_REPO_SLUG
+#  - git checkout -qf $TRAVIS_COMMIT
