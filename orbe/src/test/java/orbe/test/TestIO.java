@@ -40,7 +40,9 @@ import orbe.model.style.StyleLine;
 import orbe.model.style.TextStyle;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Ignore;
 
+@Ignore("Does not run in headless mode")
 public class TestIO extends TestCase {
 
 	@Override

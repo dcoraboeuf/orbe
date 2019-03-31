@@ -5,7 +5,9 @@ package orbe.test;
 
 import junit.framework.TestCase;
 import orbe.model.Unit;
+import org.junit.Ignore;
 
+@Ignore("Does not run in headless mode")
 public class TestUnit extends TestCase {
 
 	public void testPixels() {
