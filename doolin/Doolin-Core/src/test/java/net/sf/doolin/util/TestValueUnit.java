@@ -7,18 +7,21 @@ import java.math.BigDecimal;
 
 import net.sf.doolin.util.unit.Unit;
 import net.sf.doolin.util.unit.ValueUnit;
-import junit.framework.TestCase;
 import org.junit.Ignore;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * @author Damien Coraboeuf
  * @version $Id: TestValueUnit.java,v 1.1 2007/07/31 15:32:48 guinnessman Exp $
  */
-public class TestValueUnit extends TestCase {
+public class TestValueUnit {
 
 	/**
 	 *
 	 */
+	@Test
 	public void testEmptyConstructor() {
 		ValueUnit vu = new ValueUnit();
 		assertNull(vu.getValue());
@@ -28,6 +31,7 @@ public class TestValueUnit extends TestCase {
 	/**
 	 *
 	 */
+	@Test
 	public void testConstructor() {
 		// int
 		ValueUnit vu = new ValueUnit(10, Unit.PIXEL);
@@ -46,6 +50,7 @@ public class TestValueUnit extends TestCase {
 	/**
 	 *
 	 */
+	@Test
 	public void testToString() {
 		// int
 		ValueUnit vu = new ValueUnit(10, Unit.PIXEL);
@@ -61,6 +66,7 @@ public class TestValueUnit extends TestCase {
 	/**
 	 *
 	 */
+	@Test
 	public void testValueOf () {
 		// int
 		ValueUnit vu = ValueUnit.valueOf("10px");
@@ -77,6 +83,7 @@ public class TestValueUnit extends TestCase {
 	}
 
 	@Ignore("Not working in headless environment")
+	@Test
 	public void testConvert() {
 		// Identity
 		ValueUnit vu = ValueUnit.valueOf("10px");
