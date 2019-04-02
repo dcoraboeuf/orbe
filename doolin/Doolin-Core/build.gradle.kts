@@ -7,4 +7,6 @@ dependencies {
     implementation("commons-httpclient:commons-httpclient:3.0.1")
     implementation("commons-beanutils:commons-beanutils:1.7.0")
     implementation("commons-digester:commons-digester:1.8")
+
+    testImplementation("junit:junit:4.12")
 }
