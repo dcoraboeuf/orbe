@@ -13,6 +13,9 @@ before_script:
 build:
   stage: build
   script: ./gradlew --build-cache versionDisplay versionFile assemble
+  artifacts:
+    paths:
+      - orbe/build/libs/*-all.jar
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
