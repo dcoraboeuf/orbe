@@ -74,11 +74,11 @@ public class TestValueUnit {
 		assertEquals(Unit.PIXEL, vu.getUnit());
 		// double
 		vu = ValueUnit.valueOf("10.5cm");
-		assertEquals(10.5, vu.getValue().doubleValue());
+		assertEquals(10.5, vu.getValue().doubleValue(), 0.1);
 		assertEquals(Unit.CM, vu.getUnit());
 		// BigDecimal
 		vu = ValueUnit.valueOf("10.5%");
-		assertEquals(new BigDecimal(10.5).doubleValue(), vu.getValue().doubleValue());
+		assertEquals(new BigDecimal(10.5).doubleValue(), vu.getValue().doubleValue(), 0.1);
 		assertEquals(Unit.PERCENT, vu.getUnit());
 	}
 
