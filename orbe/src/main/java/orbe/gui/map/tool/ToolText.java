@@ -428,7 +428,7 @@ public class ToolText extends AbstractToolMap {
 	}
 
 	/**
-	 * Gestion des outils de d�placement et de rotation.
+	 * Gestion des outils de déplacement et de rotation.
 	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
@@ -448,10 +448,14 @@ public class ToolText extends AbstractToolMap {
 				toolTextDelegate.start(e);
 			}
 		}
+		// Popup
+		else if (e.isPopupTrigger()) {
+			onMousePopup(e);
+		}
 	}
 
 	/**
-	 * Gestion des outils de d�placement et de rotation.
+	 * Gestion des outils de déplacement et de rotation.
 	 */
 	@Override
 	public void mouseDragged(MouseEvent e) {
@@ -511,21 +515,25 @@ public class ToolText extends AbstractToolMap {
 			toolTextDelegate.end(e);
 			toolTextDelegate = null;
 		} else if (e.isPopupTrigger() && !e.isShiftDown() && !e.isControlDown()) {
-			Point p = e.getPoint();
-			OrbeText text = getText(p);
-			if (text != null) {
-				// Validation de tout texte existant
-				if (editedText != null) {
-					ValidationResult result = editValidate();
-					if (result == ValidationResult.FAILURE) {
-						return;
-					}
+			onMousePopup(e);
+		}
+	}
+
+	private void onMousePopup(MouseEvent e) {
+		Point p = e.getPoint();
+		OrbeText text = getText(p);
+		if (text != null) {
+			// Validation de tout texte existant
+			if (editedText != null) {
+				ValidationResult result = editValidate();
+				if (result == ValidationResult.FAILURE) {
+					return;
 				}
-				// Clic droit sur un texte => affichage du menu des styles
-				JPopupMenu menu = createMenuStyles(text);
-				// Displays the menu
-				menu.show(getControler().getComponent(), p.x, p.y);
 			}
+			// Clic droit sur un texte => affichage du menu des styles
+			JPopupMenu menu = createMenuStyles(text);
+			// Displays the menu
+			menu.show(getControler().getComponent(), p.x, p.y);
 		}
 	}
 

@@ -117,8 +117,18 @@ public abstract class AbstractToolLineDelegateNew<L extends OrbeLine> extends To
 	}
 
 	@Override
+	public void mousePressed(MouseEvent e) {
+		super.mousePressed(e);
+		mousePopup(e);
+	}
+
+	@Override
 	public void mouseReleased(MouseEvent e) {
 		super.mouseReleased(e);
+		mousePopup(e);
+	}
+
+	private void mousePopup(MouseEvent e) {
 		if (editedLine == null && e.isPopupTrigger()) {
 			OrbeLine line = getLine(e.getPoint());
 			if (line != null) {
