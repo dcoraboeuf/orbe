@@ -7,4 +7,5 @@ build
 # Ignore Intellij output
 .idea
 *.iml
+out/
 
