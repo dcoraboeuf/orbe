@@ -26,7 +26,7 @@ dependencies {
     runtime("jgoodies:looks:1.2.2")
 
     testImplementation("junit:junit:4.12")
-    testImplementation("commons-io:commons-io:1.3.1")
+    testImplementation("commons-io:commons-io:2.7")
 }
 
 tasks.jar {
